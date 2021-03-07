@@ -9,6 +9,8 @@ app.use(cors());
 
 mongooseConfig();
 
+app.use(express.json());
+
 app.use('/api', routes);
 
 
