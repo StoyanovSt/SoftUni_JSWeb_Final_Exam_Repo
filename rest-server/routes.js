@@ -175,7 +175,7 @@ router.post('/product/create', (req, res) => {
         });
 });
 
-router.get('/product/delete/:productId', (req,res)=>{
+router.get('/product/delete/:productId', (req, res) => {
     // get product id
     const productId = req.params.productId;
 
@@ -209,6 +209,48 @@ router.get('/product/edit/:productId', (req, res) => {
                 message: 'Internal server error!',
             });
         });
+});
+
+router.post('/product/edit/:productId', (req, res) => {
+    // get editted data
+    const { article, description, imageUrl, price, seller } = req.body;
+
+    // get product id
+    const productId = req.params.productId;
+
+    // find one and update multiple
+    Article.updateOne({ _id: productId }, { article: article })
+        .then(response => {
+            return Article.updateOne({ _id: productId }, { description: description });
+        })
+        .then(response => {
+            return Article.updateOne({ _id: productId }, { imageUrl: imageUrl });
+        })
+        .then(response => {
+            return Article.updateOne({ _id: productId }, { price: price });
+        })
+        .then(response => {
+            return Article.updateOne({ _id: productId }, { seller: seller });
+        })
+        .then(response => {
+            // get product by id from database
+            Article.findById(productId).lean()
+                .then(article => {
+                    res.status(201).json({
+                        article,
+                    });
+                })
+                .catch(err => {
+                    res.status(500).json({
+                        message: 'Internal server error!',
+                    });
+                });
+        })
+        .catch(err => {
+            res.status(500).json({
+                message: 'Internal server error!',
+            });
+        })
 });
 
 module.exports = router;
