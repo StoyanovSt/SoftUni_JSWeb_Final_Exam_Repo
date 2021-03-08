@@ -175,4 +175,22 @@ router.post('/product/create', (req, res) => {
         });
 });
 
+router.get('/product/delete/:productId', (req,res)=>{
+    // get product id
+    const productId = req.params.productId;
+
+    // find it is database by id and delete it
+    Article.findByIdAndDelete(productId)
+        .then(response => {
+            res.status(200).json({
+                message: 'Successfully deleted!',
+            });
+        })
+        .catch(err => {
+            res.status(500).json({
+                message: 'Internal server error!',
+            });
+        });
+});
+
 module.exports = router;
