@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const User = require('./models/User');
+const Article = require('./models/Article');
 const bcrypt = require('bcrypt');
 const config = require('./config/config');
 const jwt = require('jsonwebtoken');
@@ -126,6 +127,52 @@ router.post('/login', (req, res) => {
             });
         });
 
+});
+
+// logged user pages
+router.post('/product/create', (req, res) => {
+    // get data
+    let { article, description, imageUrl, price, seller } = req.body;
+
+    //validate data
+    //................................................
+
+    // store in database
+    const article = new Article({
+        article,
+        description,
+        imageUrl,
+        price,
+        // user id
+        // seller:       
+    });
+
+
+    article.save()
+        .then(article => {
+            // get current user from jwt from req headers
+            User.findById()
+                .then(user => {
+                    user.articles.push(article._id);
+                    return user.save();
+                })
+                .then(response => {
+                    res.status(201).json({
+                        message: 'Article is stored in database!',
+                    });
+                })
+                .catch(err => {
+                    res.status(404).json({
+                        message: 'User not found!',
+                    });
+                });
+
+        })
+        .catch(err => {
+            res.status(409).json({
+                message: 'Article information does not match the requirements!',
+            });
+        });
 });
 
 module.exports = router;

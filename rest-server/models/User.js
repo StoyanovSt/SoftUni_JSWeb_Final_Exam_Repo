@@ -12,6 +12,14 @@ const userSchema = new mongoose.Schema({
         require: true,
         validate: PASSWORD_VALIDATION_PATTERN
     },
+    articles: [
+        {
+            type: mongoose.Types.ObjectId,
+            ref: 'Article',
+        },
+    ]
+
+
 });
 
 module.exports = mongoose.model('User', userSchema);
