@@ -283,4 +283,23 @@ router.get('/product/details/:productId', (req, res) => {
 
 });
 
+// user profile page
+router.get('/profile', (req, res) => {
+    // get current user by id
+    // TODO: user ID
+    User.findById()
+        .populate('products')
+        .then(user => {
+            res.status(200).json({
+                user,
+            });
+        })
+        .catch(err => {
+            res.status(500).json({
+                message: 'Internal server error!',
+            });
+        });
+
+});
+
 module.exports = router;
