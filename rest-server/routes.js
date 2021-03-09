@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const User = require('./models/User');
-const Article = require('./models/Article');
+const Product = require('./models/Product');
 const bcrypt = require('bcrypt');
 const config = require('./config/config');
 const jwt = require('jsonwebtoken');
@@ -8,7 +8,7 @@ const jwt = require('jsonwebtoken');
 // home page
 router.get('/', (req, res) => {
     // get all products
-    Article.find()
+    Product.find()
         .lean()
         .then(products => {
             res.status(200).json({
@@ -143,14 +143,14 @@ router.post('/login', (req, res) => {
 // logged user pages
 router.post('/product/create', (req, res) => {
     // get data
-    let { article, description, imageUrl, price, seller } = req.body;
+    let { product, description, imageUrl, price, seller } = req.body;
 
     //validate data
     //................................................
 
     // store in database
-    const article = new Article({
-        article,
+    const product = new Product({
+        product,
         description,
         imageUrl,
         price,
@@ -159,12 +159,12 @@ router.post('/product/create', (req, res) => {
     });
 
 
-    article.save()
-        .then(article => {
+    product.save()
+        .then(product => {
             // get current user from jwt from req headers
             User.findById()
                 .then(user => {
-                    user.articles.push(article._id);
+                    user.products.push(product._id);
                     return user.save();
                 })
                 .then(response => {
@@ -191,7 +191,7 @@ router.get('/product/delete/:productId', (req, res) => {
     const productId = req.params.productId;
 
     // find it is database by id and delete it
-    Article.findByIdAndDelete(productId)
+    Product.findByIdAndDelete(productId)
         .then(response => {
             res.status(200).json({
                 message: 'Successfully deleted!',
@@ -209,10 +209,10 @@ router.get('/product/edit/:productId', (req, res) => {
     const productId = req.params.productId;
 
     // get product by id from database
-    Article.findById(productId).lean()
-        .then(article => {
+    Product.findById(productId).lean()
+        .then(product => {
             res.status(200).json({
-                article,
+                product,
             });
         })
         .catch(err => {
@@ -224,31 +224,31 @@ router.get('/product/edit/:productId', (req, res) => {
 
 router.post('/product/edit/:productId', (req, res) => {
     // get editted data
-    const { article, description, imageUrl, price, seller } = req.body;
+    const { product, description, imageUrl, price, seller } = req.body;
 
     // get product id
     const productId = req.params.productId;
 
     // find one and update multiple
-    Article.updateOne({ _id: productId }, { article: article })
+    Product.updateOne({ _id: productId }, { product: product })
         .then(response => {
-            return Article.updateOne({ _id: productId }, { description: description });
+            return Product.updateOne({ _id: productId }, { description: description });
         })
         .then(response => {
-            return Article.updateOne({ _id: productId }, { imageUrl: imageUrl });
+            return Product.updateOne({ _id: productId }, { imageUrl: imageUrl });
         })
         .then(response => {
-            return Article.updateOne({ _id: productId }, { price: price });
+            return Product.updateOne({ _id: productId }, { price: price });
         })
         .then(response => {
-            return Article.updateOne({ _id: productId }, { seller: seller });
+            return Product.updateOne({ _id: productId }, { seller: seller });
         })
         .then(response => {
             // get product by id from database
-            Article.findById(productId).lean()
-                .then(article => {
+            Product.findById(productId).lean()
+                .then(product => {
                     res.status(201).json({
-                        article,
+                        product,
                     });
                 })
                 .catch(err => {
@@ -269,10 +269,10 @@ router.get('/product/details/:productId', (req, res) => {
     const productId = req.params.productId;
 
     // get product by id from database
-    Article.findById(productId).lean()
-        .then(article => {
+    Product.findById(productId).lean()
+        .then(product => {
             res.status(200).json({
-                article,
+                product,
             });
         })
         .catch(err => {

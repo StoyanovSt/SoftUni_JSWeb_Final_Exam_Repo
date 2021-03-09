@@ -12,10 +12,10 @@ const userSchema = new mongoose.Schema({
         require: true,
         validate: PASSWORD_VALIDATION_PATTERN
     },
-    articles: [
+    products: [
         {
             type: mongoose.Types.ObjectId,
-            ref: 'Article',
+            ref: 'Product',
         },
     ]
 

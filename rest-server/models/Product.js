@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 
-const articleSchema = new mongoose.Schema({
-    article: {
+const productSchema = new mongoose.Schema({
+    product: {
         type: String,
         require: true,
         unique: true,
     },
-    descreption: {
+    description: {
         type: String,
         require: true,
         minlength: 20,
@@ -29,4 +29,4 @@ const articleSchema = new mongoose.Schema({
 
 });
 
-module.exports = mongoose.model('Article', articleSchema);
+module.exports = mongoose.model('Product', productSchema);
