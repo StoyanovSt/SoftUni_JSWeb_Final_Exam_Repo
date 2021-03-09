@@ -7,9 +7,20 @@ const jwt = require('jsonwebtoken');
 
 // home page
 router.get('/', (req, res) => {
-    res.json({
-        message: 'OK'
-    });
+    // get all products
+    Article.find()
+        .lean()
+        .then(products => {
+            res.status(200).json({
+                products
+            });
+        })
+        .catch(err => {
+            res.status(500).json({
+                message: 'Internal server error!',
+            });
+        });
+
 });
 
 // auth
