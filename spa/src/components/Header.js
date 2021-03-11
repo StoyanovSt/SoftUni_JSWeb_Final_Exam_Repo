@@ -7,23 +7,23 @@ class Header extends React.Component {
 
     render() {
         return (
-            <nav class="navbar navbar-expand-lg navbar-ligth">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <button type="button" class="btn btn-light">Home
+            <nav className="navbar navbar-expand-lg navbar-ligth">
+                <ul className="navbar-nav">
+                    <li className="nav-item">
+                        <button type="button" className="btn btn-light">Home
                             <a href="/"></a>
                         </button>
                     </li>
                 </ul>
 
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <button type="button" class="btn btn-light">Register
+                <ul className="navbar-nav ml-auto">
+                    <li className="nav-item">
+                        <button type="button" className="btn btn-light">Register
                             <a href="/register"></a>
                         </button>
                     </li>
-                    <li class="nav-item">
-                        <button type="button" class="btn btn-light">Login
+                    <li className="nav-item">
+                        <button type="button" className="btn btn-light">Login
                             <a href="/login"></a>
                         </button>
                     </li>

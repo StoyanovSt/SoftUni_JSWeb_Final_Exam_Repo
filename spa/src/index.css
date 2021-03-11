@@ -39,12 +39,12 @@ h5{
     color:orange;
   }
 
-/* #root{
-    padding-top: 25px;
-    padding-right: 50px;
-    padding-bottom: 25px;
-    padding-left: 50px;
-  } */
+#root{
+    padding-top: auto;
+    padding-right: auto;
+    padding-bottom: auto;
+    padding-left: auto;
+  }
 
 img {
     width: 50%;
