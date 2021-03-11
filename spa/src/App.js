@@ -6,12 +6,13 @@ import Home from './components/Home.js';
 import Register from './components/Register.js';
 import Login from './components/Login.js';
 import ProductDetails from './components/ProductDetails.js';
+import EditProduct from './components/EditProduct.js';
 
 function App() {
   return (
     <div>
       <Header />
-      <ProductDetails />
+      <EditProduct />
       <Footer />
     </div>
   );
