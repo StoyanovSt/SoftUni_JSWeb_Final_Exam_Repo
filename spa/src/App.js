@@ -8,12 +8,13 @@ import Login from './components/Login.js';
 import ProductDetails from './components/ProductDetails.js';
 import EditProduct from './components/EditProduct.js';
 import CreateProduct from './components/CreateProduct.js';
+import Contacts from './components/Contacts.js';
 
 function App() {
   return (
     <div>
       <Header />
-      <CreateProduct />
+      <Contacts />
       <Footer />
     </div>
   );
