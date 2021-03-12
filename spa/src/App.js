@@ -9,12 +9,13 @@ import ProductDetails from './components/ProductDetails.js';
 import EditProduct from './components/EditProduct.js';
 import CreateProduct from './components/CreateProduct.js';
 import Contacts from './components/Contacts.js';
+import PageNotFound from './components/PageNotFound.js';
 
 function App() {
   return (
     <div>
       <Header />
-      <Contacts />
+      <PageNotFound />
       <Footer />
     </div>
   );

@@ -28,6 +28,11 @@ code {
     width: 100%;
   }
   
+  h1 {
+    color:black;
+    text-align: center;
+}
+
 h6 {
       color:black;
       text-align: center;
