@@ -10,12 +10,13 @@ import EditProduct from './components/EditProduct.js';
 import CreateProduct from './components/CreateProduct.js';
 import Contacts from './components/Contacts.js';
 import PageNotFound from './components/PageNotFound.js';
+import UserProfile from './components/UserProfile.js';
 
 function App() {
   return (
     <div>
       <Header />
-      <PageNotFound />
+      <UserProfile />
       <Footer />
     </div>
   );
