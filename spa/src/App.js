@@ -11,12 +11,13 @@ import CreateProduct from './components/CreateProduct.js';
 import Contacts from './components/Contacts.js';
 import PageNotFound from './components/PageNotFound.js';
 import UserProfile from './components/UserProfile.js';
+import Notification from './components/Notification.js';
 
 function App() {
   return (
     <div>
       <Header />
-      <UserProfile />
+      <Notification />
       <Footer />
     </div>
   );
