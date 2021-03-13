@@ -16,8 +16,9 @@ import Notification from './components/Notification/Notification.js';
 function App() {
   return (
     <div>
-      <Footer />
-      
+      <Header />
+      <Home />
+      <Footer />      
     </div>
   );
 }

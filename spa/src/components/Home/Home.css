@@ -1,0 +1,21 @@
+h1 {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+    color: orange;
+}
+
+img {
+    margin: auto;
+    display: block;
+    width: auto;
+}
+
+.guest-home {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
+  }

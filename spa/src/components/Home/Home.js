@@ -1,4 +1,5 @@
 import React from 'react';
+import './Home.css';
 
 class Home extends React.Component {
     // constructor(props) {
@@ -36,19 +37,13 @@ class Home extends React.Component {
                     </div>
                 </div> */}
                 {/* else */}
-                <div className="row bg-light">
-                    <div className="col-md-12">
-                        <div className="guest">
-                            <h1 className="text-center">Healthy world</h1>
-                            <h2 className="text-center">Welcome to our online bee products marketplace</h2>
-                            <h5>In order to see the offerts you must first create an account!</h5>
-                            <div>
-                                <img src="../../images/sunflowers.jpg"
-                                    className="center rounded" alt="Sunflowers" />
-                            </div>
-                        </div>
-                    </div>
+
+                <div className="guest-home">
+                    <h1>Welcome to Healthy world!</h1>
+                    <h2>The biggest online bee products marketplace</h2>
+                    <img src="../../images/sunflowers.jpg" className="rounded" alt="Sunflowers" />                    
                 </div>
+
                 {/* if */}
             </div>
 
