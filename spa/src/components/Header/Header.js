@@ -1,4 +1,5 @@
 import React from 'react';
+import './Header.css';
 
 class Header extends React.Component {
     // constructor(props) {
@@ -7,7 +8,7 @@ class Header extends React.Component {
 
     render() {
         return (
-            <nav className="navbar navbar-expand-lg navbar-ligth">
+            <nav className="navbar navbar-expand-lg">
                 <ul className="navbar-nav">
                     <li className="nav-item">
                         <button type="button" className="btn btn-light">Home
@@ -15,7 +16,6 @@ class Header extends React.Component {
                         </button>
                     </li>
                 </ul>
-
                 <ul className="navbar-nav ml-auto">
                     <li className="nav-item">
                         <button type="button" className="btn btn-light">Register

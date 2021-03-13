@@ -17,8 +17,7 @@ function App() {
   return (
     <div>
       <Header />
-      <Notification />
-      <Footer />
+      
     </div>
   );
 }
