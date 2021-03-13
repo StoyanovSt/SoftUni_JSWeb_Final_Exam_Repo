@@ -10,7 +10,7 @@ class ProductDetails extends React.Component {
             <div className="row bg-light">
                 <div className="col-md-8">
                     <h1>Пчелен мед</h1>
-                    <img className="img-thumbnail" src="../images/991-ratio-med.jpg" alt="Пчелен мед" />
+                    <img className="img-thumbnail" src="../images/honey-jar.jpg" alt="Пчелен мед" />
                 </div>
                 <div className="col-md-12 text-center">
                     <h3>Описание:</h3>

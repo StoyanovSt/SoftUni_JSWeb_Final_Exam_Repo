@@ -12,7 +12,7 @@ class Home extends React.Component {
                 {/* <div className="all-offers">
                     <div className="row bg-light">
                         <div className="col-md-4">
-                            <img src="../../images/991-ratio-med.jpg" className="rounded-circle" alt="Пчелен мед" />
+                            <img src="../../images/honey-jar.jpg" className="rounded-circle" alt="Пчелен мед" />
                             <div>Пчелен мед</div>
                             <div>Цена: 10лв.</div>
 
@@ -43,7 +43,7 @@ class Home extends React.Component {
                             <h2 className="text-center">Welcome to our online bee products marketplace</h2>
                             <h5>In order to see the offerts you must first create an account!</h5>
                             <div>
-                                <img src="../../images/csm_Sunflower_Koppert_Biological_Systems_1e52b3de18.jpg"
+                                <img src="../../images/sunflowers.jpg"
                                     className="center rounded" alt="Sunflowers" />
                             </div>
                         </div>
