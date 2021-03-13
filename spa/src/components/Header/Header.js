@@ -27,6 +27,18 @@ class Header extends React.Component {
                             <a href="/login"></a>
                         </button>
                     </li>
+                    
+                    {/* <li className="nav-item">
+                        <button type="button" className="btn btn-light">My profile
+                            <a href="/user/profile"></a>
+                        </button>
+                    </li>
+                    <li className="nav-item">
+                        <button type="button" className="btn btn-light">Logout
+                            <a href="/logout"></a>
+                        </button>
+                    </li> */}                    
+
                 </ul>
             </nav>
         );
