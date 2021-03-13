@@ -1,4 +1,6 @@
 import React from 'react';
+import { Fragment } from 'react';
+
 import './Home.css';
 
 class Home extends React.Component {
@@ -8,45 +10,44 @@ class Home extends React.Component {
 
     render() {
         return (
-            <div className="home-view">
+            <Fragment>
                 {/* if loggedIn */}
-                {/* <div className="all-offers">
+
+                <div className="products-container">
                     <div className="row bg-light">
                         <div className="col-md-4">
-                            <img src="../../images/honey-jar.jpg" className="rounded-circle" alt="Пчелен мед" />
-                            <div>Пчелен мед</div>
-                            <div>Цена: 10лв.</div>
-
-                            <a href="/details">
-                                <button type="button" className="btn btn-light">Повече информация за
-                                    продукта
-                                </button>
-                            </a>
+                            <img src="../../images/honey-jar.jpg" className="rounded-circle" alt="Honey" />
+                            <p>Honey</p>
+                            <p>Price: 10 lv/kg</p>
+                            <p>
+                                <a href="/details/product/productId">
+                                    <button type="button" className="btn btn-secondary">More info</button>
+                                </a>
+                            </p>
                         </div>
                         <div className="col-md-4">
-                            <img src="../../images/propolis.jpg" className="rounded-circle" alt="Прополис" />
-                            <div>Прополис</div>
-                            <div>Цена: 30лв.</div>
-
-                            <a href="/details">
-                                <button type="button" className="btn btn-light">Повече информация за
-                                    продукта
-                                </button>
-                            </a>
+                            <img src="../../images/propolis.jpg" className="rounded-circle" alt="Propolis" />
+                            <p>Propolis</p>
+                            <p>Price: 30 lv/kg</p>
+                            <p>
+                                <a href="/details/product/productId">
+                                    <button type="button" className="btn btn-secondary">More info</button>
+                                </a>
+                            </p>
                         </div>
                     </div>
-                </div> */}
-                {/* else */}
-
-                <div className="guest-home">
-                    <h1>Welcome to Healthy world!</h1>
-                    <h2>The biggest online bee products marketplace</h2>
-                    <img src="../../images/sunflowers.jpg" className="rounded" alt="Sunflowers" />                    
                 </div>
 
-                {/* if */}
-            </div>
+                {/* else */}
 
+                {/* <div className="guest-home">
+                    <h1>Welcome to Healthy world!</h1>
+                    <h2>The biggest online bee products marketplace</h2>
+                    <img src="../../images/sunflowers.jpg" className="rounded" alt="Sunflowers" />
+                </div> */}
+
+                {/* if */}
+            </Fragment>
         );
     }
 }
