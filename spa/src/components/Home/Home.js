@@ -15,7 +15,7 @@ class Home extends React.Component {
 
                 <div className="products-container">
                     <div className="row bg-light">
-                        <div className="col-md-4">
+                        {/* <div className="col-md-4">
                             <img src="../../images/honey-jar.jpg" className="rounded-circle" alt="Honey" />
                             <p>Honey</p>
                             <p>Price: 10 lv/kg</p>
@@ -34,6 +34,9 @@ class Home extends React.Component {
                                     <button type="button" className="btn btn-secondary">More info</button>
                                 </a>
                             </p>
+                        </div> */}
+                        <div className="col-md-12">
+                            <h3>No products so far...</h3>
                         </div>
                     </div>
                 </div>

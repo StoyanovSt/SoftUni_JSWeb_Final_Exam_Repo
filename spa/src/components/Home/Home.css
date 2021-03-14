@@ -7,6 +7,10 @@ h2 {
     color: orange;
 }
 
+h3 {
+    text-align: center;
+}
+
 img {
     margin: auto;
     display: block;
@@ -36,3 +40,4 @@ p {
     margin-right: 20px;
     margin-left: 20px;
 }
+
