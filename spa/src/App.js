@@ -17,7 +17,7 @@ function App() {
   return (
     <div className="site-wrapper">
       <Header />
-      <Home />
+      <CreateProduct />
       <Footer />      
     </div>
   );
