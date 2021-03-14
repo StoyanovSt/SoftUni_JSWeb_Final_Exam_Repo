@@ -11,10 +11,10 @@ h3 {
     text-align: center;
 }
 
-img {
+#guest-view {
     margin: auto;
     display: block;
-    width: auto;
+    width: 955px;
 }
 
 div img {

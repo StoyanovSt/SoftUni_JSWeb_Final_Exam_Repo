@@ -13,9 +13,9 @@ class Home extends React.Component {
             <Fragment>
                 {/* if loggedIn */}
 
-                <div className="products-container">
+                {/* <div className="products-container">
                     <div className="row bg-light">
-                        {/* <div className="col-md-4">
+                        <div className="col-md-4">
                             <img src="../../images/honey-jar.jpg" className="rounded-circle" alt="Honey" />
                             <p>Honey</p>
                             <p>Price: 10 lv/kg</p>
@@ -34,20 +34,20 @@ class Home extends React.Component {
                                     <button type="button" className="btn btn-secondary">More info</button>
                                 </a>
                             </p>
-                        </div> */}
+                        </div>
                         <div className="col-md-12">
                             <h3>No products so far...</h3>
                         </div>
                     </div>
-                </div>
+                </div> */}
 
                 {/* else */}
 
-                {/* <div className="guest-home">
+                <div className="guest-home">
                     <h1>Welcome to Healthy world!</h1>
                     <h2>The biggest online bee products marketplace</h2>
-                    <img src="../../images/sunflowers.jpg" className="rounded" alt="Sunflowers" />
-                </div> */}
+                    <img src="../../images/sunflowers.jpg" className="rounded" id="guest-view" alt="Sunflowers" />
+                </div>
 
                 {/* if */}
             </Fragment>
