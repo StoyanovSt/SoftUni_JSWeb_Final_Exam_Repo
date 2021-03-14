@@ -1,5 +1,7 @@
 import React from 'react';
-import style from './UserProfile.module.css';
+import { Fragment } from 'react';
+
+import './UserProfile.css';
 
 class UserProfile extends React.Component {
     // constructor(props) {
@@ -8,14 +10,15 @@ class UserProfile extends React.Component {
 
     render() {
         return (
-            <div className={style.userProfileWrapper}>
-                <img src="../../images/profile-pic.png" className={style.profilePicture} alt="Profile picture" />
-                <div>
-                    <p>Name: ... </p>
-                    <p>Phone: ... </p>
-                    <p>E-mail: ... </p>                    
+            <Fragment>
+                <div id="profile-picture-wrapper">
+                    <img src="../../images/profile-pic.png" id="profile-picture" alt="Profile picture" />
                 </div>
-            </div>
+                <div id="profile-info-wrapper">
+                    <p>All articles:</p>
+                    <p>.......................................................................</p>
+                </div>
+            </Fragment>
         );
     }
 }
