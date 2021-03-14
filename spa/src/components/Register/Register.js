@@ -1,4 +1,7 @@
 import React from 'react';
+import { Fragment } from 'react';
+
+import './Register.css';
 
 class Register extends React.Component {
     // constructor(props) {
@@ -7,13 +10,12 @@ class Register extends React.Component {
 
     render() {
         return (
-            <div>
-                <h2 className="text-center">Please register an account:</h2>
-
-                <form id="register-form" className="text-center border border-light p-5" action="/register" method="POST">
+            <Fragment>
+                <h2 id="register-heading">Please register an account:</h2>
+                <form id="register-form" action="/register" method="POST">
                     <div className="form-group">
-                        <label for="email">Email:</label>
-                        <input type="text" id="email" className="form-control" name="email" placeholder="Email" />
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" className="form-control" name="username" placeholder="Username" />
                     </div>
                     <div className="form-group">
                         <label for="password">Password:</label>
@@ -23,12 +25,9 @@ class Register extends React.Component {
                         <label for="rePassword">Repeat Password:</label>
                         <input type="password" id="rePassword" className="form-control" name="rePassword" placeholder="Repeat Password" />
                     </div>
-                    <div className="form-group">
-                        <button type="button" className="btn btn-primary">Register</button>
-                    </div>
+                    <button type="submit" className="btn btn-primary">Register</button>
                 </form >
-            </div >
-
+            </Fragment >
         );
     }
 }

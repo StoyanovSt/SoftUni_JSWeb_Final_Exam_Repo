@@ -1,13 +1,13 @@
-h2 {
+#create-product-heading {
     color: black;
     text-align: center;
     margin-top: 20px;
 }
 
-form {
+#create-form {
     text-align: center;
     margin-top: 55px;
     margin-bottom: 40px;
-    margin-right: 100px;
-    margin-left: 100px;
+    margin-right: 200px;
+    margin-left: 200px;
 }

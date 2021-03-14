@@ -17,7 +17,7 @@ function App() {
   return (
     <div className="site-wrapper">
       <Header />
-      <EditProduct />
+      <Register />
       <Footer />      
     </div>
   );

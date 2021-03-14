@@ -11,8 +11,8 @@ class EditProduct extends React.Component {
     render() {
         return (
             <Fragment>
-                <h2>Edit product</h2>
-                <form action="/product/edit:productId" method="POST">
+                <h2 id="edit-product-heading">Edit product</h2>
+                <form id="edit-form" action="/product/edit:productId" method="POST">
                     <div className="form-group">
                         <label for="product">Product name:</label>
                         <input type="text" className="form-control" placeholder="Product name" name="product" value="" />
