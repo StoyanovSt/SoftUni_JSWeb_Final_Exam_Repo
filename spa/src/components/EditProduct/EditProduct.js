@@ -1,4 +1,7 @@
 import React from 'react';
+import { Fragment } from 'react';
+
+import './EditProduct.css';
 
 class EditProduct extends React.Component {
     // constructor(props) {
@@ -7,13 +10,12 @@ class EditProduct extends React.Component {
 
     render() {
         return (
-            <div>
-                <h2 className="text-center">Edit product</h2>
-
-                <form className="text-center border border-light p-5" action="/product/edit:productId" method="POST">
+            <Fragment>
+                <h2>Edit product</h2>
+                <form action="/product/edit:productId" method="POST">
                     <div className="form-group">
-                        <label for="article">Product name:</label>
-                        <input type="text" className="form-control" placeholder="Article name" name="article" value="" />
+                        <label for="product">Product name:</label>
+                        <input type="text" className="form-control" placeholder="Product name" name="product" value="" />
                     </div>
                     <div className="form-group">
                         <label for="description">Description:</label>
@@ -29,11 +31,12 @@ class EditProduct extends React.Component {
                     </div>
                     <div className="form-group">
                         <label for="seller">Seller:</label>
-                        <input type="email" className="form-control" placeholder="Seller" name="seller" value="" />
+                        <input type="text" className="form-control" placeholder="Seller" name="seller" value="" />
                     </div>
                     <button type="submit" className="btn btn-primary">Edit</button>
                 </form>
-            </div>
+            </Fragment>
+
         );
     }
 }
