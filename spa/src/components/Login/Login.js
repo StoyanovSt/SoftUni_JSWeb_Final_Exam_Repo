@@ -1,4 +1,7 @@
 import React from 'react';
+import { Fragment } from 'react';
+
+import './Login.css';
 
 class Login extends React.Component {
     // constructor(props) {
@@ -7,24 +10,20 @@ class Login extends React.Component {
 
     render() {
         return (
-            <div>
-                <h2 className="text-center">Please login:</h2>
-
-                <form id="login-form" className="text-center border border-light p-5" action="/login" method="POST">
+            <Fragment>
+                <h2 id="register-heading">Please enter username and password:</h2>
+                <form id="login-form" action="/login" method="POST">
                     <div className="form-group">
-                        <label for="email">Email:</label>
-                        <input type="text" id="email" className="form-control" name="email" placeholder="Email" />
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" className="form-control" name="username" placeholder="Username" />
                     </div>
                     <div className="form-group">
                         <label for="password">Password:</label>
                         <input type="password" id="password" className="form-control" name="password" placeholder="Password" />
                     </div>
-                    <div className="form-group">
-                        <button type="submit" className="btn btn-primary">Login</button>
-                    </div>
+                    <button type="submit" className="btn btn-primary">Login</button>
                 </form>
-            </div >
-
+            </Fragment >
         );
     }
 }
