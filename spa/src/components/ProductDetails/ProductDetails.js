@@ -18,10 +18,9 @@ class ProductDetails extends React.Component {
 
                 <div className="col-md-12 text-center">
                     <h3>Description:</h3>
-                    <p>Продавам биологично чист пчелен мед. Година на производство - юни, 2021г. </p>
+                    <p>Продавам биологично чист пчелен мед. Година на производство - юни, 2021г.</p>
                     <p><strong>Price:</strong> 10 lv./kg </p>
                     <p><strong>Seller:</strong> Петко Петков</p>
-                    <p><strong>Email:</strong>...</p>
 
                     {/* if user is creator */}
                     <p id="buttons">
