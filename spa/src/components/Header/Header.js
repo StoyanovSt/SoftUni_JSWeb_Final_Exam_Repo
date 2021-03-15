@@ -14,6 +14,11 @@ class Header extends React.Component {
                             <a href="/"></a>
                         </button>
                     </li>
+                    {/* <li className="nav-item">
+                        <button type="button" className="btn btn-light">Create product
+                            <a href="/product/create"></a>
+                        </button>
+                    </li> */}
                 </ul>
                 <ul className="navbar-nav ml-auto">
                     <li className="nav-item">
