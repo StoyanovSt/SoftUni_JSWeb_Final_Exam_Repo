@@ -1,0 +1,12 @@
+#success {
+    font-size: x-large;
+    text-align: center;
+    color: lime;
+}
+
+#error {
+    font-size: x-large;
+    text-align: center;
+    color: red;
+    
+}

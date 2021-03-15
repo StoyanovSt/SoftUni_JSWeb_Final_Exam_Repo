@@ -1,4 +1,5 @@
 import React from 'react';
+import './Notification.css';
 
 class Notification extends React.Component {
     // constructor(props) {
@@ -7,12 +8,12 @@ class Notification extends React.Component {
 
     render() {
         return (
-            <div className="notification-wrapper">
-                <section className="notifications" id="successNotification">
-                    <p className="notification-message" id="success">Successful!</p>
+            <div className="notification-wrapper" >
+                <section id="success-notification">
+                    <p id="success">Successful message!</p>
                 </section>
-                <section className="notifications" id="errorNotification">
-                    <p className="notification-message" id="error">Error!</p>
+                <section id="error-notification">
+                    <p id="error">Error message!</p>
                 </section>
             </div>
         );
