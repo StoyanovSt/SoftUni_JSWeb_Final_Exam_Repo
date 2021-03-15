@@ -35,7 +35,7 @@ class Home extends React.Component {
                                 </a>
                             </p>
                         </div>
-                        <div className="col-md-12">
+                        <div className="col-md-12" id="empty-container">
                             <h3>No products so far...</h3>
                         </div>
                     </div>
