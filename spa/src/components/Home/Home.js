@@ -35,6 +35,27 @@ class Home extends React.Component {
                                 </a>
                             </p>
                         </div>
+                        <div className="col-md-4">
+                            <img src="../../images/honey-jar.jpg" className="rounded-circle" alt="Honey" />
+                            <p>Honey</p>
+                            <p>Price: 10 lv/kg</p>
+                            <p>
+                                <a href="/details/product/productId">
+                                    <button type="button" className="btn btn-secondary">More info</button>
+                                </a>
+                            </p>
+                        </div>
+                        <div className="col-md-4">
+                            <img src="../../images/propolis.jpg" className="rounded-circle" alt="Propolis" />
+                            <p>Propolis</p>
+                            <p>Price: 30 lv/kg</p>
+                            <p>
+                                <a href="/details/product/productId">
+                                    <button type="button" className="btn btn-secondary">More info</button>
+                                </a>
+                            </p>
+                        </div>
+
                         <div className="col-md-12" id="empty-container">
                             <h3>No products so far...</h3>
                         </div>

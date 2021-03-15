@@ -21,9 +21,9 @@ div img {
     margin-top: 20px;
     margin-bottom: 20px;
     margin-right: 20px;
-    margin-left: 20px;
+    margin-left: 50px;
     display: block;
-    width: 300px;
+    width: 207px;
 }
 
 .guest-home {
@@ -35,14 +35,12 @@ div img {
 
 p {
     text-align: auto;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-right: 20px;
-    margin-left: 20px;
+    margin-left: 50px;
 }
 
 #empty-container {
     margin-top: 294px;
     margin-bottom: 294px;
 }
+
 
