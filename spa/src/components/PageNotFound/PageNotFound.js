@@ -1,5 +1,7 @@
 import React from 'react';
-import style from './PageNotFound.module.css';
+import { Fragment } from 'react';
+
+import './PageNotFound.css';
 
 class PageNotFound extends React.Component {
     // constructor(props) {
@@ -8,14 +10,10 @@ class PageNotFound extends React.Component {
 
     render() {
         return (
-            <div>
-                <span className="col-md-12">
-                    <img src="../../images/page-not-found.jpg" className="rounded-circle" alt="Page not found!" />
-                </span>
-                <span className={style.pageNotFound}>
-                    Page not found!
-                </span>
-            </div>
+            <Fragment>
+                <p id="page-not-found-message">Page not found!</p>
+                <img src="../../images/page-not-found.jpg" id="page-not-found" alt="Page not found!" />
+            </Fragment>
         );
     }
 }

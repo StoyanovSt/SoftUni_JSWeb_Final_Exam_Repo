@@ -1,0 +1,11 @@
+#page-not-found-message {
+    margin-top: 25px;
+    text-align: center;
+    font-size: xx-large;
+}
+
+#page-not-found {
+    margin-left: 530px;
+    width: 29%;
+    height: auto;    
+}
