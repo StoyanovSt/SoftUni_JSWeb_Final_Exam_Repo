@@ -10,7 +10,7 @@ const productSchema = new mongoose.Schema({
         type: String,
         require: true,
         minlength: 20,
-        maxlength: 50
+        maxlength: 200
     },
     imageUrl: {
         type: String,

@@ -19,7 +19,7 @@ class CreateProduct extends React.Component {
                     </div>
                     <div className="form-group">
                         <label for="description">Description:</label>
-                        <textarea className="form-control" placeholder="Description" name="description"></textarea>
+                        <textarea className="form-control" placeholder="Please add an e-mail address in the description in order to help other users to contact you!" name="description"></textarea>
                     </div>
                     <div className="form-group">
                         <label for="imageUrl">Image url:</label>
