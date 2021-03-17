@@ -54,6 +54,7 @@ router.post('/register', (req, res) => {
                             .then(hash => {
                                 // store in database
                                 const user = new User({ username: userData.username, password: hash });
+                                
                                 user.save()
                                     .then(response => {
                                         res.status(201).json({

@@ -12,7 +12,7 @@ class Register extends React.Component {
         return (
             <Fragment>
                 <h2 id="register-heading">Please register an account:</h2>
-                <form id="register-form" action="/api/register" method="POST">
+                <form id="register-form" action="http://localhost:5000/api/register" method="POST">
                     <div className="form-group">
                         <label for="username">Username:</label>
                         <input type="text" id="username" className="form-control" name="username" placeholder="Username" />
