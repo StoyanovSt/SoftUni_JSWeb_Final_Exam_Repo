@@ -140,10 +140,6 @@ router.post('/login', (req, res) => {
 
 });
 
-router.get('/logout', (req, res) => {
-
-});
-
 // logged user pages
 router.post('/product/create', (req, res) => {
     // get data
@@ -287,6 +283,10 @@ router.get('/product/:productId/details', (req, res) => {
 
 });
 
+
+router.get('/product/:productId/buy', (req, res) => {
+    // TO DO
+});
 
 // user profile page
 router.get('/user/profile', (req, res) => {
