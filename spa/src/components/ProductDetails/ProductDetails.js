@@ -14,7 +14,7 @@ class ProductDetails extends React.Component {
             <Fragment>
                 <h1 id="product-name">Honey</h1>
                 <div className="col-md-12">
-                    <img className="img-thumbnail" src="../images/honey-jar.jpg" id="product-pic" alt="Пчелен мед" />
+                    <img className="img-thumbnail" src="../../../images/honey-jar.jpg" id="product-pic" alt="Пчелен мед" />
                 </div>
 
                 <div className="col-md-12 text-center">

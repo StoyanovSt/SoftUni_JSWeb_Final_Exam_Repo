@@ -149,7 +149,7 @@ router.post('/product/create', (req, res) => {
     //................................................
 
     // store in database
-    const product = new Product({
+    const newProduct = new Product({
         product,
         description,
         imageUrl,
@@ -159,7 +159,7 @@ router.post('/product/create', (req, res) => {
     });
 
 
-    product.save()
+    newProduct.save()
         .then(product => {
             // get current user from jwt from req headers
             User.findById()

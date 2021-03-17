@@ -12,9 +12,9 @@ class Footer extends React.Component {
                 <nav className="navbar">
                     <ul className="navbar-nav">
                         <li className="nav-item">
-                            <button type="button" className="btn btn-light">Contacts and information
-                                <Link to="/api/contacts"></Link>
-                            </button>
+                            <Link to="/api/contacts">
+                                <button type="button" className="btn btn-light">Contacts and information</button>
+                            </Link>
                         </li>
                     </ul>
                     <ul className="navbar-nav ml-auto">

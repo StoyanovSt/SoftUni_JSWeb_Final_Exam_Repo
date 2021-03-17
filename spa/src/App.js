@@ -1,6 +1,6 @@
 
 import './App.css';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Redirect, Switch } from 'react-router-dom';
 
 import Header from './components/Header/Header.js';
 import Footer from './components/Footer/Footer.js';
@@ -20,6 +20,7 @@ function App() {
         <div className="site-wrapper">
             <Header />
             <Switch>
+                <Route path="/" exact render={() => <Redirect to="/api/" />} />
                 <Route path="/api/" exact component={Home} />
                 <Route path="/api/register" exact component={Register} />
                 <Route path="/api/login" exact component={Login} />

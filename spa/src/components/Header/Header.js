@@ -11,38 +11,38 @@ class Header extends React.Component {
             <nav className="navbar navbar-expand-lg">
                 <ul className="navbar-nav">
                     <li className="nav-item">
-                        <button type="button" className="btn btn-light">Home                            
-                            <Link to="/api"></Link>
-                        </button>
+                        <Link to="/api">
+                            <button type="button" className="btn btn-light">Home</button>
+                        </Link>
                     </li>
                     {/* <li className="nav-item">
-                        <button type="button" className="btn btn-light">Create product
-                            <Link to="/api/product/create"></Link>
-                        </button>
+                        <Link to="/api/product/create">
+                            <button type="button" className="btn btn-light">Create product</button>
+                        </Link>
                     </li> */}
                 </ul>
                 <ul className="navbar-nav ml-auto">
                     <li className="nav-item">
-                        <button type="button" className="btn btn-light">Register
-                            <Link to="/api/register"></Link>
-                        </button>
+                        <Link to="/api/register">
+                            <button type="button" className="btn btn-light">Register</button>
+                        </Link>
                     </li>
                     <li className="nav-item">
-                        <button type="button" className="btn btn-light">Login
-                            <Link to="/api/login"></Link>
-                        </button>
+                        <Link to="/api/login">
+                            <button type="button" className="btn btn-light">Login</button>
+                        </Link>
                     </li>
-                    
+
                     {/* <li className="nav-item">
-                        <button type="button" className="btn btn-light">My profile
-                            <Link to="/api/user/profile"></Link>
-                        </button>
+                        <Link to="/api/user/profile">
+                            <button type="button" className="btn btn-light">My profile</button>
+                        </Link>
                     </li>
                     <li className="nav-item">
-                        <button type="button" className="btn btn-light">Logout
-                            <Link to="/api/logout"></Link>
-                        </button>
-                    </li> */}                    
+                        <Link to="/api/logout">
+                            <button type="button" className="btn btn-light">Logout</button>
+                        </Link>
+                    </li> */}
 
                 </ul>
             </nav>

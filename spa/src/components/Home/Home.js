@@ -17,41 +17,41 @@ class Home extends React.Component {
                 <div className="products-container">
                     <div className="row bg-light">
                         <div className="col-md-4">
-                            <img src="../../images/honey-jar.jpg" className="rounded-circle" alt="Honey" />
+                            <img src="../../../images/honey-jar.jpg" className="rounded-circle" alt="Honey" />
                             <p>Honey</p>
                             <p>Price: 10 lv/kg</p>
                             <p>
-                                <Link to="/api/product/{productId/details}">
+                                <Link to="/api/product/{productId}/details">
                                     <button type="button" className="btn btn-secondary">More info</button>
                                 </Link>
                             </p>
                         </div>
                         <div className="col-md-4">
-                            <img src="../../images/propolis.jpg" className="rounded-circle" alt="Propolis" />
+                            <img src="../../../images/propolis.jpg" className="rounded-circle" alt="Propolis" />
                             <p>Propolis</p>
                             <p>Price: 30 lv/kg</p>
                             <p>
-                                <Link to="/api/product/{productId/details}">
+                                <Link to="/api/product/{productId}/details">
                                     <button type="button" className="btn btn-secondary">More info</button>
                                 </Link>
                             </p>
                         </div>
                         <div className="col-md-4">
-                            <img src="../../images/honey-jar.jpg" className="rounded-circle" alt="Honey" />
+                            <img src="../../../images/honey-jar.jpg" className="rounded-circle" alt="Honey" />
                             <p>Honey</p>
                             <p>Price: 10 lv/kg</p>
                             <p>
-                                <Link to="/api/product/{productId/details}">
+                                <Link to="/api/product/{productId}/details">
                                     <button type="button" className="btn btn-secondary">More info</button>
                                 </Link>
                             </p>
                         </div>
                         <div className="col-md-4">
-                            <img src="../../images/propolis.jpg" className="rounded-circle" alt="Propolis" />
+                            <img src="../../../images/propolis.jpg" className="rounded-circle" alt="Propolis" />
                             <p>Propolis</p>
                             <p>Price: 30 lv/kg</p>
                             <p>
-                                <Link to="/api/product/{productId/details}">
+                                <Link to="/api/product/{productId}/details">
                                     <button type="button" className="btn btn-secondary">More info</button>
                                 </Link>
                             </p>
@@ -68,7 +68,7 @@ class Home extends React.Component {
                 {/* <div className="guest-home">
                     <h1>Welcome to Healthy world!</h1>
                     <h2>The biggest online bee products marketplace</h2>
-                    <img src="../../images/sunflowers.jpg" className="rounded" id="guest-view" alt="Sunflowers" />
+                    <img src="../../../images/sunflowers.jpg" className="rounded" id="guest-view" alt="Sunflowers" />
                 </div> */}
 
                 {/* if */}
