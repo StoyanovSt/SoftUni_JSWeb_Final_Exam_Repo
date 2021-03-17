@@ -1,5 +1,6 @@
 import React from 'react';
 import { Fragment } from 'react';
+import { Link } from 'react-router-dom';
 
 import './Home.css';
 
@@ -20,9 +21,9 @@ class Home extends React.Component {
                             <p>Honey</p>
                             <p>Price: 10 lv/kg</p>
                             <p>
-                                <a href="/details/product/productId">
+                                <Link to="/api/product/{productId/details}">
                                     <button type="button" className="btn btn-secondary">More info</button>
-                                </a>
+                                </Link>
                             </p>
                         </div>
                         <div className="col-md-4">
@@ -30,9 +31,9 @@ class Home extends React.Component {
                             <p>Propolis</p>
                             <p>Price: 30 lv/kg</p>
                             <p>
-                                <a href="/details/product/productId">
+                                <Link to="/api/product/{productId/details}">
                                     <button type="button" className="btn btn-secondary">More info</button>
-                                </a>
+                                </Link>
                             </p>
                         </div>
                         <div className="col-md-4">
@@ -40,9 +41,9 @@ class Home extends React.Component {
                             <p>Honey</p>
                             <p>Price: 10 lv/kg</p>
                             <p>
-                                <a href="/details/product/productId">
+                                <Link to="/api/product/{productId/details}">
                                     <button type="button" className="btn btn-secondary">More info</button>
-                                </a>
+                                </Link>
                             </p>
                         </div>
                         <div className="col-md-4">
@@ -50,9 +51,9 @@ class Home extends React.Component {
                             <p>Propolis</p>
                             <p>Price: 30 lv/kg</p>
                             <p>
-                                <a href="/details/product/productId">
+                                <Link to="/api/product/{productId/details}">
                                     <button type="button" className="btn btn-secondary">More info</button>
-                                </a>
+                                </Link>
                             </p>
                         </div>
 

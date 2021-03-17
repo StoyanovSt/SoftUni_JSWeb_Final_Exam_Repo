@@ -1,5 +1,6 @@
 import React from 'react';
 import { Fragment } from 'react';
+import { Link } from 'react-router-dom';
 
 import './ProductDetails.css';
 
@@ -24,9 +25,15 @@ class ProductDetails extends React.Component {
 
                     {/* if user is creator */}
                     <p id="buttons">
-                        <a className="btn btn-secondary" href="/api/product/edit/{productId}">Edit</a>
-                        <a className="btn btn-danger" href="/api/product/delete/{productId}">Delete</a>
-                        {/* <a className="btn btn-success" href="/product/buy">Buy product</a> */}
+                        <Link to="/api/product/{productId}/edit">
+                            <button type="button" className="btn btn-secondary">Edit</button>
+                        </Link>
+                        <Link to="/api/product/{productId}/detele">
+                            <button type="button" className="btn btn-danger">Delete</button>
+                        </Link>
+                        {/* <Link to="/api/product/{productId}/buy">
+                            <button type="button" className="btn btn-success">Buy product</button>
+                        </Link> */}
                     </p>
                 </div>
             </Fragment>

@@ -186,7 +186,7 @@ router.post('/product/create', (req, res) => {
         });
 });
 
-router.get('/product/delete/:productId', (req, res) => {
+router.get('/product/:productId/delete', (req, res) => {
     // get product id
     const productId = req.params.productId;
 
@@ -204,7 +204,7 @@ router.get('/product/delete/:productId', (req, res) => {
         });
 });
 
-router.get('/product/edit/:productId', (req, res) => {
+router.get('/product/:productId/edit', (req, res) => {
     // get product id
     const productId = req.params.productId;
 
@@ -222,7 +222,7 @@ router.get('/product/edit/:productId', (req, res) => {
         });
 });
 
-router.post('/product/edit/:productId', (req, res) => {
+router.post('/product/:productId/edit', (req, res) => {
     // get editted data
     const { product, description, imageUrl, price, seller } = req.body;
 
@@ -281,6 +281,10 @@ router.get('/product/:productId/details', (req, res) => {
             });
         });
 
+});
+
+router.get('/product/:productId/buy', (req, res) => {
+    // TO DO
 });
 
 // user profile page

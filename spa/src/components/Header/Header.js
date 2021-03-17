@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class Header extends React.Component {
     // constructor(props) {
@@ -10,36 +11,36 @@ class Header extends React.Component {
             <nav className="navbar navbar-expand-lg">
                 <ul className="navbar-nav">
                     <li className="nav-item">
-                        <button type="button" className="btn btn-light">Home
-                            <a href="/"></a>
+                        <button type="button" className="btn btn-light">Home                            
+                            <Link to="/api"></Link>
                         </button>
                     </li>
                     {/* <li className="nav-item">
                         <button type="button" className="btn btn-light">Create product
-                            <a href="/product/create"></a>
+                            <Link to="/api/product/create"></Link>
                         </button>
                     </li> */}
                 </ul>
                 <ul className="navbar-nav ml-auto">
                     <li className="nav-item">
                         <button type="button" className="btn btn-light">Register
-                            <a href="/register"></a>
+                            <Link to="/api/register"></Link>
                         </button>
                     </li>
                     <li className="nav-item">
                         <button type="button" className="btn btn-light">Login
-                            <a href="/login"></a>
+                            <Link to="/api/login"></Link>
                         </button>
                     </li>
                     
                     {/* <li className="nav-item">
                         <button type="button" className="btn btn-light">My profile
-                            <a href="/user/profile"></a>
+                            <Link to="/api/user/profile"></Link>
                         </button>
                     </li>
                     <li className="nav-item">
                         <button type="button" className="btn btn-light">Logout
-                            <a href="/logout"></a>
+                            <Link to="/api/logout"></Link>
                         </button>
                     </li> */}                    
 

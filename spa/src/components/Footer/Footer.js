@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class Footer extends React.Component {
     // constructor(props) {
@@ -12,7 +13,7 @@ class Footer extends React.Component {
                     <ul className="navbar-nav">
                         <li className="nav-item">
                             <button type="button" className="btn btn-light">Contacts and information
-                                <a href="/contacts"></a>
+                                <Link to="/api/contacts"></Link>
                             </button>
                         </li>
                     </ul>

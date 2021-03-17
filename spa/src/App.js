@@ -1,6 +1,6 @@
 
 import './App.css';
-import { Route, Link, Redirect, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import Header from './components/Header/Header.js';
 import Footer from './components/Footer/Footer.js';
@@ -24,7 +24,7 @@ function App() {
                 <Route path="/api/register" exact component={Register} />
                 <Route path="/api/login" exact component={Login} />
                 <Route path="/api/product/create" exact component={CreateProduct} />
-                <Route path="/api/product/edit/:productId" exact component={EditProduct} />
+                <Route path="/api/product/:productId/edit" exact component={EditProduct} />
                 <Route path="/api/product/:productId/details" exact component={ProductDetails} />
                 <Route path="/api/user/profile" exact component={UserProfile} />
                 <Route path="/api/contacts" exact component={Contacts} />
