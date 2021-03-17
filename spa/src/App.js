@@ -16,13 +16,23 @@ import UserProfile from './components/UserProfile/UserProfile.js';
 import Notification from './components/Notification/Notification.js';
 
 function App() {
-  return (
-    <div className="site-wrapper">
-      <Header />
-      <Home />
-      <Footer />      
-    </div>
-  );
+    return (
+        <div className="site-wrapper">
+            <Header />
+            <Switch>
+                <Route path="/api/" exact component={Home} />
+                <Route path="/api/register" exact component={Register} />
+                <Route path="/api/login" exact component={Login} />
+                <Route path="/api/product/create" exact component={CreateProduct} />
+                <Route path="/api/product/edit/:productId" exact component={EditProduct} />
+                <Route path="/api/product/:productId/details" exact component={ProductDetails} />
+                <Route path="/api/user/profile" exact component={UserProfile} />
+                <Route path="/api/contacts" exact component={Contacts} />
+                <Route component={PageNotFound} />
+            </Switch>
+            <Footer />
+        </div>
+    );
 }
 
 export default App;

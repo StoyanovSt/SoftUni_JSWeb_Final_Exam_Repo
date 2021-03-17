@@ -264,7 +264,7 @@ router.post('/product/edit/:productId', (req, res) => {
         })
 });
 
-router.get('/product/details/:productId', (req, res) => {
+router.get('/product/:productId/details', (req, res) => {
     // get product id
     const productId = req.params.productId;
 
@@ -284,7 +284,7 @@ router.get('/product/details/:productId', (req, res) => {
 });
 
 // user profile page
-router.get('/profile', (req, res) => {
+router.get('/user/profile', (req, res) => {
     // get current user by id
     // TODO: user ID
     User.findById()

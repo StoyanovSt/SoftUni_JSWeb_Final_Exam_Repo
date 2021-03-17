@@ -24,8 +24,8 @@ class ProductDetails extends React.Component {
 
                     {/* if user is creator */}
                     <p id="buttons">
-                        <a className="btn btn-secondary" href="/product/edit">Edit</a>
-                        <a className="btn btn-danger" href="/product/delete">Delete</a>
+                        <a className="btn btn-secondary" href="/api/product/edit/{productId}">Edit</a>
+                        <a className="btn btn-danger" href="/api/product/delete/{productId}">Delete</a>
                         {/* <a className="btn btn-success" href="/product/buy">Buy product</a> */}
                     </p>
                 </div>
