@@ -12,7 +12,7 @@ class Login extends React.Component {
         return (
             <Fragment>
                 <h2 id="register-heading">Please enter username and password:</h2>
-                <form id="login-form" action="/login" method="POST">
+                <form id="login-form" action="/api/login" method="POST">
                     <div className="form-group">
                         <label for="username">Username:</label>
                         <input type="text" id="username" className="form-control" name="username" placeholder="Username" />

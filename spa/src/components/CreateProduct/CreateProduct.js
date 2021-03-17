@@ -12,7 +12,7 @@ class CreateProduct extends React.Component {
         return (
             <Fragment>
                 <h2 id="create-product-heading">Create new product</h2>
-                <form id="create-form" action="/product/create" method="POST">
+                <form id="create-form" action="/api/product/create" method="POST">
                     <div className="form-group">
                         <label for="product">Product name:</label>
                         <input type="text" className="form-control" placeholder="Product name" name="product" />
