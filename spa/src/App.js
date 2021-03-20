@@ -13,7 +13,6 @@ import CreateProduct from './components/CreateProduct/CreateProduct.js';
 import Contacts from './components/Contacts/Contacts.js';
 import PageNotFound from './components/PageNotFound/PageNotFound.js';
 import UserProfile from './components/UserProfile/UserProfile.js';
-import Notification from './components/Notification/Notification.js';
 
 function App() {
     return (
