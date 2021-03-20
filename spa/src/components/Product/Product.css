@@ -1,0 +1,13 @@
+div img {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    margin-left: 50px;
+    display: block;
+    width: 207px;
+}
+
+p {
+    text-align: auto;
+    margin-left: 50px;
+}

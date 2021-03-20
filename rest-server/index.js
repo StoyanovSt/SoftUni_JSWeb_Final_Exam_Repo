@@ -9,12 +9,12 @@ app.use(cors());
 
 mongooseConfig();
 
-// app.use(express.json());
+app.use(express.json());
 
 // body parser
-app.use(express.urlencoded({
-    extended: true
-}));
+// app.use(express.urlencoded({
+//     extended: true
+// }));
 
 app.use('/api', routes);
 
