@@ -4,6 +4,8 @@ import { Redirect } from 'react-router-dom';
 
 import './Login.css';
 import Notification from '../Notification/Notification.js';
+import Header from '../Header/Header.js';
+import Footer from '../Footer/Footer.js';
 
 class Login extends React.Component {
     constructor(props) {
@@ -53,7 +55,7 @@ class Login extends React.Component {
                     }));
 
                     setTimeout(() => {
-                        localStorage.setItem('user', JSON.stringify(response.token));
+                        localStorage.setItem('user', JSON.stringify({ TOKEN: response.token, USERNAME: response.username }));
                         this.setState({ redirect: true });
                     }, 5000);
                 }
@@ -69,6 +71,7 @@ class Login extends React.Component {
         } else {
             return (
                 <Fragment>
+                    <Header />
                     <h2 id="register-heading">Please enter username and password:</h2>
                     <Notification message={this.state.notificationMessage} type={this.state.notificationType} />
                     <form id="login-form">
@@ -82,6 +85,7 @@ class Login extends React.Component {
                         </div>
                         <button onClick={(e) => this.onClickHandler(e)} type="submit" className="btn btn-primary">Login</button>
                     </form>
+                    <Footer />
                 </Fragment >
             );
         }

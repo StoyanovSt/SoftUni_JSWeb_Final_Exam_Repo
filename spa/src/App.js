@@ -2,8 +2,6 @@
 import './App.css';
 import { Route, Redirect, Switch } from 'react-router-dom';
 
-import Header from './components/Header/Header.js';
-import Footer from './components/Footer/Footer.js';
 import Home from './components/Home/Home.js';
 import Register from './components/Register/Register.js';
 import Login from './components/Login/Login.js';
@@ -17,12 +15,11 @@ import UserProfile from './components/UserProfile/UserProfile.js';
 function App() {
     function logoutUser() {
         localStorage.removeItem('user');
-        return <Redirect to="/api/login" />;
+        return <Redirect to="/api/" />;
     };
 
     return (
         <div className="site-wrapper">
-            <Header />
             <Switch>
                 <Route path="/" exact render={() => <Redirect to="/api/" />} />
                 <Route path="/api/" exact component={Home} />
@@ -36,7 +33,6 @@ function App() {
                 <Route path="/api/contacts" exact component={Contacts} />
                 <Route component={PageNotFound} />
             </Switch>
-            <Footer />
         </div>
     );
 }

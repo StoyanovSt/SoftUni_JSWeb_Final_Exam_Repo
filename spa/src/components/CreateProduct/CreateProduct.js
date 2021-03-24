@@ -2,6 +2,8 @@ import React from 'react';
 import { Fragment } from 'react';
 
 import './CreateProduct.css';
+import Header from '../Header/Header.js';
+import Footer from '../Footer/Footer.js';
 
 class CreateProduct extends React.Component {
     // constructor(props) {
@@ -11,6 +13,7 @@ class CreateProduct extends React.Component {
     render() {
         return (
             <Fragment>
+                <Header />
                 <h2 id="create-product-heading">Create new product</h2>
                 <form id="create-form" action="/api/product/create" method="POST">
                     <div className="form-group">
@@ -35,6 +38,7 @@ class CreateProduct extends React.Component {
                     </div>
                     <button type="submit" className="btn btn-primary">Create</button>
                 </form>
+                <Footer />
             </Fragment>
         );
     }

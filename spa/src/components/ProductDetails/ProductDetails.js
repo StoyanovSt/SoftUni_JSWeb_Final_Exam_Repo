@@ -3,6 +3,8 @@ import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
 import './ProductDetails.css';
+import Header from '../Header/Header.js';
+import Footer from '../Footer/Footer.js';
 
 class ProductDetails extends React.Component {
     // constructor(props) {
@@ -12,6 +14,7 @@ class ProductDetails extends React.Component {
     render() {
         return (
             <Fragment>
+                <Header />
                 <h1 id="product-name">Honey</h1>
                 <div className="col-md-12">
                     <img className="img-thumbnail" src="../../../images/honey-jar.jpg" id="product-pic" alt="Пчелен мед" />
@@ -36,6 +39,7 @@ class ProductDetails extends React.Component {
                         </Link> */}
                     </p>
                 </div>
+                <Footer />
             </Fragment>
         );
     }

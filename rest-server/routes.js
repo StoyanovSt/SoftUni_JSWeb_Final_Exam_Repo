@@ -150,12 +150,12 @@ router.post('/login', (req, res) => {
                     // generate jwt and send it to the client as json
                     const token = jwt.sign({
                         _id: user._id,
-                        username: user.username
                     }, config.SECRET);
 
                     res.status(200).json({
                         message: 'Successful logged in!',
                         token: token,
+                        username: user.username,
                         hasError: false,
                     });
 

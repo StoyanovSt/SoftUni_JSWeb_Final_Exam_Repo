@@ -4,6 +4,8 @@ import { Redirect } from 'react-router-dom';
 
 import './Register.css';
 import Notification from '../Notification/Notification.js';
+import Header from '../Header/Header.js';
+import Footer from '../Footer/Footer.js';
 
 class Register extends React.Component {
     constructor(props) {
@@ -72,6 +74,7 @@ class Register extends React.Component {
         } else {
             return (
                 <Fragment>
+                    <Header />
                     <h2 id="register-heading">Please register an account:</h2>
                     <Notification message={this.state.notificationMessage} type={this.state.notificationType} />
                     <form id="register-form">
@@ -89,6 +92,7 @@ class Register extends React.Component {
                         </div>
                         <button onClick={(e) => this.onClickHandler(e)} type="submit" className="btn btn-primary">Register</button>
                     </form >
+                    <Footer />
                 </Fragment >
             );
         }

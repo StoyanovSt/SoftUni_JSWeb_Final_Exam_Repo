@@ -1,8 +1,10 @@
 import React from 'react';
 import { Fragment } from 'react';
 
-import Product from '../Product/Product.js';
 import './UserProfile.css';
+import Product from '../Product/Product.js';
+import Header from '../Header/Header.js';
+import Footer from '../Footer/Footer.js';
 
 class UserProfile extends React.Component {
     constructor(props) {
@@ -25,6 +27,7 @@ class UserProfile extends React.Component {
     render() {
         return (
             <Fragment>
+                <Header />
                 <img src="../../../images/profile-pic.png" id="profile-picture" alt="Profile picture" />
                 <p>Username: {this.state.userInfo.username}</p>
                 <p>All available products:</p>
@@ -36,6 +39,7 @@ class UserProfile extends React.Component {
                         />
                     })}
                 </div>
+                <Footer />
             </Fragment>
         );
     }

@@ -1,6 +1,8 @@
 import React from 'react';
 import { Fragment } from 'react';
 
+import Header from '../Header/Header.js';
+import Footer from '../Footer/Footer.js';
 import Product from '../Product/Product.js';
 import './Home.css';
 
@@ -25,6 +27,7 @@ class Home extends React.Component {
     render() {
         return (
             <Fragment>
+                <Header />
                 {/* if loggedIn */}
 
                 <div className="products-container">
@@ -51,6 +54,7 @@ class Home extends React.Component {
                 </div> */}
 
                 {/* if */}
+                <Footer />
             </Fragment>
         );
     }
