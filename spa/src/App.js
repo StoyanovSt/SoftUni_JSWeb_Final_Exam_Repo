@@ -15,6 +15,11 @@ import PageNotFound from './components/PageNotFound/PageNotFound.js';
 import UserProfile from './components/UserProfile/UserProfile.js';
 
 function App() {
+    function logoutUser() {
+        localStorage.removeItem('user');
+        return <Redirect to="/api/login" />;
+    };
+
     return (
         <div className="site-wrapper">
             <Header />
@@ -23,6 +28,7 @@ function App() {
                 <Route path="/api/" exact component={Home} />
                 <Route path="/api/register" exact component={Register} />
                 <Route path="/api/login" exact component={Login} />
+                <Route path="/api/logout" exact render={logoutUser} />
                 <Route path="/api/product/create" exact component={CreateProduct} />
                 <Route path="/api/product/:productId/edit" exact component={EditProduct} />
                 <Route path="/api/product/:productId/details" exact component={ProductDetails} />

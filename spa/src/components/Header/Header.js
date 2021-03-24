@@ -37,12 +37,12 @@ class Header extends React.Component {
                         <Link to="/api/user/profile">
                             <button type="button" className="btn btn-light">My profile</button>
                         </Link>
-                    </li>
+                    </li> */}
                     <li className="nav-item">
                         <Link to="/api/logout">
                             <button type="button" className="btn btn-light">Logout</button>
                         </Link>
-                    </li> */}
+                    </li>
 
                 </ul>
             </nav>

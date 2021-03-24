@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 const config = require('./config/config');
 const jwt = require('jsonwebtoken');
 
-// home page
+// HOME PAGE
 router.get('/', (req, res) => {
     // get all products
     Product.find()
@@ -23,7 +23,7 @@ router.get('/', (req, res) => {
 
 });
 
-// auth
+// AUTH-----------------------------
 
 // register - DONE
 router.post('/register', (req, res) => {
@@ -118,6 +118,7 @@ router.post('/register', (req, res) => {
 
 });
 
+// login - DONE
 router.post('/login', (req, res) => {
     // get user data
     const userData = req.body;
@@ -175,8 +176,9 @@ router.post('/login', (req, res) => {
         });
 
 });
+//----------------------------------------------------------------------------
 
-// logged user pages
+// LOGGED USER PAGES
 router.post('/product/create', (req, res) => {
     // get data
     let { product, description, imageUrl, price, seller } = req.body;
@@ -324,7 +326,7 @@ router.get('/product/:productId/buy', (req, res) => {
     // TO DO
 });
 
-// user profile page
+// USER PROFILE PAGE
 router.get('/user/profile', (req, res) => {
     // get current user by id
     // TODO: user ID
@@ -344,7 +346,7 @@ router.get('/user/profile', (req, res) => {
 });
 
 //---------------------------------------
-// page not found
+// PAGE NOT FOUND
 router.get('*', (req, res) => {
     res.status(404).json({
         message: 'Page not found!'

@@ -29,16 +29,16 @@ class Home extends React.Component {
 
                 <div className="products-container">
                     <div className="row bg-light">
-                        {this.state.products.map(product => {
+                        {/* {this.state.products.map(product => {
                             <Product
                                 key={product._id}
                                 data={product}
                             />
-                        })}
+                        })} */}
 
-                        {/* <div className="col-md-12" id="empty-container">
+                        <div className="col-md-12" id="empty-container">
                             <h3>No products so far...</h3>
-                        </div> */}
+                        </div>
                     </div>
                 </div>
 
