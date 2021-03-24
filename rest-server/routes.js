@@ -181,10 +181,44 @@ router.post('/login', (req, res) => {
 // LOGGED USER PAGES
 router.post('/product/create', (req, res) => {
     // get data
-    let { product, description, imageUrl, price, seller } = req.body;
+    let { product, description, imageUrl, price} = req.body;
 
     //validate data
-    //................................................
+    if (product === '') {
+        res.status(409).json({
+            message: 'Invalid input!',
+            hasError: true,
+        });
+
+        return;
+    }
+
+    if (description === '' || description < 10 || description > 150) {
+        res.status(409).json({
+            message: 'Invalid input! Description must be between 10 and 150 characters long!',
+            hasError: true,
+        });
+
+        return;
+    }
+
+    if (imageUrl === '') {
+        res.status(409).json({
+            message: 'Invalid input!',
+            hasError: true,
+        });
+
+        return;
+    }
+
+    if (price === '' || price < 0) {
+        res.status(409).json({
+            message: 'Invalid input! Selling price must be non negative number!',
+            hasError: true,
+        });
+
+        return;
+    }
 
     // store in database
     const newProduct = new Product({
@@ -192,8 +226,8 @@ router.post('/product/create', (req, res) => {
         description,
         imageUrl,
         price,
-        // user id
-        // seller:       
+        // do tuk
+        seller:       
     });
 
 

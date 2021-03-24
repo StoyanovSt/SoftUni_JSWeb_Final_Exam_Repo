@@ -15,14 +15,14 @@ class EditProduct extends React.Component {
             <Fragment>
                 <Header />
                 <h2 id="edit-product-heading">Edit product</h2>
-                <form id="edit-form" action="/api/product/edit/{productId}" method="POST">
+                <form id="edit-form">
                     <div className="form-group">
-                        <label for="product">Product name:</label>
-                        <input type="text" className="form-control" name="product" value="" />
+                        <label htmlFor="product">Product name:</label>
+                        <input id="product" type="text" className="form-control" name="product" value="" />
                     </div>
                     <div className="form-group">
                         <label for="description">Description:</label>
-                        <textarea className="form-control" name="description"></textarea>
+                        <textarea id="description" className="form-control" name="description"></textarea>
                     </div>
                     <div className="form-group">
                         <label for="imageUrl">Image url:</label>

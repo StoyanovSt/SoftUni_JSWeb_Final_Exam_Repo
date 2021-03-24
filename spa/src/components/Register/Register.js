@@ -57,7 +57,6 @@ class Register extends React.Component {
                     }));
 
                     setTimeout(() => {
-                        // <Notification message="" />
                         this.setState({ redirect: true });
                     }, 5000);
                 }
