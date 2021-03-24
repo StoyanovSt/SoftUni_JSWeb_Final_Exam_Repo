@@ -1,59 +1,97 @@
 import React from 'react';
 import { Fragment } from 'react';
-import { Redirect} from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 import './Register.css';
+import Notification from '../Notification/Notification.js';
 
 class Register extends React.Component {
-    // constructor(props) {
-    //     super(props);
-    // }
+    constructor(props) {
+        super(props);
 
-    registerUser(e){
-        console.log(e);
-        const username = e.target;
-        const password = e.target;
-
-        fetch('http://localhost:5000/api/register', {
-                method: 'POST',
-                headers: {
-                    'content-type': 'application/json'
-                },
-                body: JSON.stringify({
-                    username,
-                    password,
-                })
-            })
-                .then(response => response.json())
-                .then(data => {
-                    localStorage.setItem('user', JSON.stringify(data));
-                    <Redirect to="/api/login" />
-                })
-                .catch(err => console.error(err));
-        
+        this.state = {
+            redirect: false,
+            notificationMessage: '',
+            notificationType: '',
+        }
     }
 
+    onClickHandler(e) {
+        e.preventDefault();
+
+        const username = e.target.parentNode.username.value;
+        const password = e.target.parentNode.password.value;
+        const rePassword = e.target.parentNode.rePassword.value;
+
+        fetch('http://localhost:5000/api/register', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({
+                username,
+                password,
+                rePassword,
+            })
+        })
+            .then(response => response.json())
+            .then(response => {
+                if (response.hasError) {
+                    this.setState((oldState) => ({
+                        notificationMessage: oldState.notificationMessage = response.message,
+                        notificationType: oldState.notificationType = 'error',
+                    }));
+
+                    setTimeout(() => {
+                        this.setState((oldState) => ({
+                            notificationMessage: oldState.notificationMessage = '',
+                        }));
+                    }, 4000);
+
+                } else {
+                    this.setState((oldState) => ({
+                        notificationMessage: oldState.notificationMessage = response.message,
+                        notificationType: oldState.notificationType = 'success',
+                    }));
+
+                    setTimeout(() => {
+                        // <Notification message="" />
+                        this.setState({ redirect: true });
+                    }, 4000);
+                }
+            })
+            .catch(err => console.log(err));
+    }
+
+
     render() {
-        return (
-            <Fragment>
-                <h2 id="register-heading">Please register an account:</h2>
-                <form id="register-form" action="/api/register" method="POST">
-                    <div className="form-group">
-                        <label for="username">Username:</label>
-                        <input type="text" id="username" className="form-control" name="username" placeholder="Username" />
-                    </div>
-                    <div className="form-group">
-                        <label for="password">Password:</label>
-                        <input type="password" id="password" className="form-control" name="password" placeholder="Password" />
-                    </div>
-                    <div className="form-group">
-                        <label for="rePassword">Repeat Password:</label>
-                        <input type="password" id="rePassword" className="form-control" name="rePassword" placeholder="Repeat Password" />
-                    </div>
-                    <button onClick={(e) => this.registerUser(e)} type="submit" className="btn btn-primary">Register</button>
-                </form >
-            </Fragment >
-        );
+        const { redirect } = this.state;
+
+        if (redirect) {
+            return <Redirect to="/api/login" />;
+        } else {
+            return (
+                <Fragment>
+                    <h2 id="register-heading">Please register an account:</h2>
+                    <Notification message={this.state.notificationMessage} type={this.state.notificationType} />
+                    <form id="register-form">
+                        <div className="form-group">
+                            <label htmlFor="username">Username:</label>
+                            <input type="text" id="username" className="form-control" name="username" placeholder="Username" />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="password">Password:</label>
+                            <input type="password" id="password" className="form-control" name="password" placeholder="Password" />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="rePassword">Repeat Password:</label>
+                            <input type="password" id="rePassword" className="form-control" name="rePassword" placeholder="Repeat Password" />
+                        </div>
+                        <button onClick={(e) => this.onClickHandler(e)} type="submit" className="btn btn-primary">Register</button>
+                    </form >
+                </Fragment >
+            );
+        }
     }
 }
 

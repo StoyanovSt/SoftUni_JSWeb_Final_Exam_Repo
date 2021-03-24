@@ -7,12 +7,12 @@ const userSchema = new mongoose.Schema({
         type: String,
         require: true,
         unique: true,
-        validate: /^[a-zA-Z]{4,}$/,
+        // validate: /^[a-zA-Z]{4,}$/,
     },
     password: {
         type: String,
         require: true,
-        validate: /^[a-zA-Z0-9]{6,}$/,
+        // validate: /^[a-zA-Z0-9]{6,}$/,
     },
     products: [
         {

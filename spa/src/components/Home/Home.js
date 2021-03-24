@@ -13,14 +13,14 @@ class Home extends React.Component {
         }
     }
 
-    componentDidMount() {
-        fetch('http://localhost:5000/api/')
-            .then(res => res.json())
-            .then(allProducts => {
-                this.setState({ products: allProducts });
-            })
-            .catch(error => console.log(error));
-    }
+    // componentDidMount() {
+    //     fetch('http://localhost:5000/api/')
+    //         .then(res => res.json())
+    //         .then(allProducts => {
+    //             this.setState({ products: allProducts });
+    //         })
+    //         .catch(error => console.log(error));
+    // }
 
     render() {
         return (

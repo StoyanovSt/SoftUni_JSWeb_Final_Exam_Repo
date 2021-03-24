@@ -37,6 +37,7 @@ router.post('/register', (req, res) => {
             if (user) {
                 res.status(409).json({
                     message: 'User already exists',
+                    hasError: true,
                 });
 
             } else {
@@ -44,6 +45,7 @@ router.post('/register', (req, res) => {
                 if (userData.password !== userData.rePassword) {
                     res.status(400).json({
                         message: 'Passwords do not match!',
+                        hasError: true,
                     });
                 }
 
@@ -59,24 +61,28 @@ router.post('/register', (req, res) => {
                                     .then(response => {
                                         res.status(201).json({
                                             message: 'User is stored in database!',
+                                            hasError: false,
                                         });
 
                                     })
                                     .catch(error => {
                                         res.status(409).json({
                                             message: 'Username or password do not match the requirements!',
+                                            hasError: true,
                                         });
                                     });
                             })
                             .catch(error => {
                                 res.status(500).json({
                                     message: 'Internal server error!',
+                                    hasError: true,
                                 });
                             });
                     })
                     .catch(error => {
                         res.status(500).json({
                             message: 'Internal server error!',
+                            hasError: true,
                         });
                     });
             }
@@ -84,6 +90,7 @@ router.post('/register', (req, res) => {
         .catch(error => {
             res.status(500).json({
                 message: 'Internal server error!',
+                hasError: true,
             });
         });
 
