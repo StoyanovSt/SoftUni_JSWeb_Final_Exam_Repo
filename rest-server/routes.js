@@ -54,7 +54,7 @@ router.post('/register', (req, res) => {
         .then(user => {
             if (user) {
                 res.status(409).json({
-                    message: 'User already exists',
+                    message: 'User already exists!',
                     hasError: true,
                 });
 
@@ -82,7 +82,7 @@ router.post('/register', (req, res) => {
                                 user.save()
                                     .then(response => {
                                         res.status(201).json({
-                                            message: 'User is stored in database!',
+                                            message: 'Successful registration!',
                                             hasError: false,
                                         });
 
@@ -122,16 +122,16 @@ router.post('/login', (req, res) => {
     // get user data
     const userData = req.body;
 
-    // validate data
-    //.................................................
-
     // check if such user exists in database
     User.findOne({ username: userData.username })
         .then(user => {
             if (!user) {
                 res.status(404).json({
-                    message: 'User not found!',
+                    message: 'Invalid username or password!',
+                    hasError: true,
                 });
+
+                return;
             }
 
             // check if passwords match
@@ -139,8 +139,11 @@ router.post('/login', (req, res) => {
                 .then(response => {
                     if (!response) {
                         res.status(409).json({
-                            message: 'Username or password do not match the requirements!',
+                            message: 'Invalid username or password!',
+                            hasError: true,
                         });
+
+                        return;
                     }
 
                     // generate jwt and send it to the client as json
@@ -150,14 +153,16 @@ router.post('/login', (req, res) => {
                     }, config.SECRET);
 
                     res.status(200).json({
-                        message: 'User is logged!',
+                        message: 'Successful logged in!',
                         token: token,
+                        hasError: false,
                     });
 
                 })
                 .catch(err => {
                     res.status(500).json({
                         message: 'Internal server error!',
+                        hasError: true,
                     });
                 });
 
@@ -165,6 +170,7 @@ router.post('/login', (req, res) => {
         .catch(error => {
             res.status(500).json({
                 message: 'Internal server error!',
+                hasError: true,
             });
         });
 
