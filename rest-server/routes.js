@@ -24,12 +24,30 @@ router.get('/', (req, res) => {
 });
 
 // auth
+
+// register - DONE
 router.post('/register', (req, res) => {
     // get user data
     const userData = req.body;
 
     // validate data
-    //......................
+    if (!userData.username.match(config.USERNAME_VALIDATION_PATTERN)) {
+        res.status(409).json({
+            message: 'Username must be atleast four characters long and may contains only english letters and digits!',
+            hasError: true,
+        });
+
+        return;
+    }
+
+    if (!userData.password.match(config.PASSWORD_VALIDATION_PATTERN)) {        
+        res.status(409).json({            
+            message: 'Password must be atleast six characters long and may contains only english letters and digits!',
+            hasError: true,
+        });
+
+        return;
+    }
 
     // chech if such user exists in database
     User.findOne({ username: userData.username })
@@ -40,6 +58,8 @@ router.post('/register', (req, res) => {
                     hasError: true,
                 });
 
+                return;
+
             } else {
                 // check if password and rePassword matches
                 if (userData.password !== userData.rePassword) {
@@ -47,6 +67,8 @@ router.post('/register', (req, res) => {
                         message: 'Passwords do not match!',
                         hasError: true,
                     });
+
+                    return;
                 }
 
                 // hash password
@@ -66,8 +88,8 @@ router.post('/register', (req, res) => {
 
                                     })
                                     .catch(error => {
-                                        res.status(409).json({
-                                            message: 'Username or password do not match the requirements!',
+                                        res.status(500).json({
+                                            message: 'Internal server error!',
                                             hasError: true,
                                         });
                                     });

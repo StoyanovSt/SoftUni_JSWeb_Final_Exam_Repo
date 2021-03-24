@@ -46,7 +46,7 @@ class Register extends React.Component {
                         this.setState((oldState) => ({
                             notificationMessage: oldState.notificationMessage = '',
                         }));
-                    }, 4000);
+                    }, 5000);
 
                 } else {
                     this.setState((oldState) => ({
@@ -57,7 +57,7 @@ class Register extends React.Component {
                     setTimeout(() => {
                         // <Notification message="" />
                         this.setState({ redirect: true });
-                    }, 4000);
+                    }, 5000);
                 }
             })
             .catch(err => console.log(err));
