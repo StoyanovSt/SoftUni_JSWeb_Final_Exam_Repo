@@ -30,7 +30,7 @@ class CreateProduct extends React.Component {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
-                'authorization': `Bearer ${JSON.parse(localStorage.getItem('user')).TOKEN}`,
+                'authorization': `${JSON.parse(localStorage.getItem('user')).TOKEN}`,
             },
             body: JSON.stringify({
                 product,

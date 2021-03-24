@@ -220,42 +220,44 @@ router.post('/product/create', (req, res) => {
         return;
     }
 
-    // store in database
-    const newProduct = new Product({
-        product,
-        description,
-        imageUrl,
-        price,
-        // do tuk
-        seller:       
-    });
+    // const userId = req.user._id;
+
+    // // store in database
+    // const newProduct = new Product({
+    //     product,
+    //     description,
+    //     imageUrl,
+    //     price,
+    //     // do tuk
+    //     // seller      
+    // });
 
 
-    newProduct.save()
-        .then(product => {
-            // get current user from jwt from req headers
-            User.findById()
-                .then(user => {
-                    user.products.push(product._id);
-                    return user.save();
-                })
-                .then(response => {
-                    res.status(201).json({
-                        message: 'Article is stored in database!',
-                    });
-                })
-                .catch(err => {
-                    res.status(404).json({
-                        message: 'User not found!',
-                    });
-                });
+    // newProduct.save()
+    //     .then(product => {
+    //         // get current user from jwt from req headers
+    //         User.findById()
+    //             .then(user => {
+    //                 user.products.push(product._id);
+    //                 return user.save();
+    //             })
+    //             .then(response => {
+    //                 res.status(201).json({
+    //                     message: 'Article is stored in database!',
+    //                 });
+    //             })
+    //             .catch(err => {
+    //                 res.status(404).json({
+    //                     message: 'User not found!',
+    //                 });
+    //             });
 
-        })
-        .catch(err => {
-            res.status(409).json({
-                message: 'Article information does not match the requirements!',
-            });
-        });
+    //     })
+    //     .catch(err => {
+    //         res.status(409).json({
+    //             message: 'Article information does not match the requirements!',
+    //         });
+    //     });
 });
 
 router.get('/product/:productId/delete', (req, res) => {
