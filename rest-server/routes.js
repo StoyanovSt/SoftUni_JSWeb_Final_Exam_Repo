@@ -6,7 +6,7 @@ const config = require('./config/config');
 const jwt = require('jsonwebtoken');
 const isAuth = require('./middlewares/isAuth.js');
 
-// HOME PAGE
+// HOME PAGE - DONE
 router.get('/', (req, res) => {
     // get all products
     Product.find()
@@ -374,6 +374,7 @@ router.get('/product/:productId/details', (req, res) => {
         .catch(err => {
             res.status(500).json({
                 message: 'Internal server error!',
+                hasError: true,
             });
         });
 

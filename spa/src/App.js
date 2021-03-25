@@ -27,8 +27,8 @@ function App() {
                 <Route path="/api/login" exact component={Login} />
                 <Route path="/api/logout" exact render={logoutUser} />
                 <Route path="/api/product/create" exact component={CreateProduct} />
-                <Route path="/api/product/:productId/edit" exact component={EditProduct} />
                 <Route path="/api/product/:productId/details" exact component={ProductDetails} />
+                <Route path="/api/product/:productId/edit" exact component={EditProduct} />
                 <Route path="/api/user/profile" exact component={UserProfile} />
                 <Route path="/api/contacts" exact component={Contacts} />
                 <Route component={PageNotFound} />
