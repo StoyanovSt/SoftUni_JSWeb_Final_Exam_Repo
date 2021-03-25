@@ -15,6 +15,7 @@ class CreateProduct extends React.Component {
             redirect: false,
             notificationMessage: '',
             notificationType: '',
+            unauthorized: false,
         }
     }
 
@@ -26,11 +27,17 @@ class CreateProduct extends React.Component {
         const imageUrl = e.target.parentNode.imageUrl.value;
         const price = e.target.parentNode.price.value;
 
+        let token = '';
+
+        if (localStorage.getItem('user')) {
+            token = JSON.parse(localStorage.getItem('user')).TOKEN;
+        }
+
         fetch('http://localhost:5000/api/product/create', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
-                'authorization': `${JSON.parse(localStorage.getItem('user')).TOKEN}`,
+                'authorization': `${token}`,
             },
             body: JSON.stringify({
                 product,
@@ -51,6 +58,12 @@ class CreateProduct extends React.Component {
                         this.setState((oldState) => ({
                             notificationMessage: oldState.notificationMessage = '',
                         }));
+
+                        if (response.unauthorized) {
+                            this.setState((oldState) => ({
+                                unauthorized: oldState.unauthorized = true,
+                            }));
+                        }
                     }, 5000);
 
                 } else {
@@ -69,9 +82,12 @@ class CreateProduct extends React.Component {
 
     render() {
         const { redirect } = this.state;
+        const { unauthorized } = this.state;
 
         if (redirect) {
             return <Redirect to="/api/" />;
+        } else if (unauthorized) {
+            return <Redirect to="/api/login" />;
         } else {
             return (
                 <Fragment>

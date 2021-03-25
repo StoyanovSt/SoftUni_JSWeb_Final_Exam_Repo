@@ -4,6 +4,7 @@ const Product = require('./models/Product');
 const bcrypt = require('bcrypt');
 const config = require('./config/config');
 const jwt = require('jsonwebtoken');
+const isAuth = require('./middlewares/isAuth.js');
 
 // HOME PAGE
 router.get('/', (req, res) => {
@@ -40,8 +41,8 @@ router.post('/register', (req, res) => {
         return;
     }
 
-    if (!userData.password.match(config.PASSWORD_VALIDATION_PATTERN)) {        
-        res.status(409).json({            
+    if (!userData.password.match(config.PASSWORD_VALIDATION_PATTERN)) {
+        res.status(409).json({
             message: 'Password must be atleast six characters long and may contains only english letters and digits!',
             hasError: true,
         });
@@ -78,7 +79,7 @@ router.post('/register', (req, res) => {
                             .then(hash => {
                                 // store in database
                                 const user = new User({ username: userData.username, password: hash });
-                                
+
                                 user.save()
                                     .then(response => {
                                         res.status(201).json({
@@ -179,9 +180,9 @@ router.post('/login', (req, res) => {
 //----------------------------------------------------------------------------
 
 // LOGGED USER PAGES
-router.post('/product/create', (req, res) => {
+router.post('/product/create', isAuth, (req, res) => {
     // get data
-    let { product, description, imageUrl, price} = req.body;
+    let { product, description, imageUrl, price } = req.body;
 
     //validate data
     if (product === '') {
@@ -193,9 +194,18 @@ router.post('/product/create', (req, res) => {
         return;
     }
 
-    if (description === '' || description < 10 || description > 150) {
+    if (description === '') {
         res.status(409).json({
-            message: 'Invalid input! Description must be between 10 and 150 characters long!',
+            message: 'Invalid input!',
+            hasError: true,
+        });
+
+        return;
+    }
+
+    if (description.length < 10 || description.length > 150) {
+        res.status(409).json({
+            message: 'Description must be between 10 and 150 characters long!',
             hasError: true,
         });
 
@@ -211,53 +221,63 @@ router.post('/product/create', (req, res) => {
         return;
     }
 
-    if (price === '' || price < 0) {
+    if (price === '') {
         res.status(409).json({
-            message: 'Invalid input! Selling price must be non negative number!',
+            message: 'Invalid input!',
             hasError: true,
         });
 
         return;
     }
 
-    // const userId = req.user._id;
+    if (price < 0) {
+        res.status(409).json({
+            message: 'Selling price must be non negative number!',
+            hasError: true,
+        });
 
-    // // store in database
-    // const newProduct = new Product({
-    //     product,
-    //     description,
-    //     imageUrl,
-    //     price,
-    //     // do tuk
-    //     // seller      
-    // });
+        return;
+    }
+
+    const userId = req.user._id;
+
+    // store in database
+    const newProduct = new Product({
+        product,
+        description,
+        imageUrl,
+        price,
+        seller: userId,
+    });
 
 
-    // newProduct.save()
-    //     .then(product => {
-    //         // get current user from jwt from req headers
-    //         User.findById()
-    //             .then(user => {
-    //                 user.products.push(product._id);
-    //                 return user.save();
-    //             })
-    //             .then(response => {
-    //                 res.status(201).json({
-    //                     message: 'Article is stored in database!',
-    //                 });
-    //             })
-    //             .catch(err => {
-    //                 res.status(404).json({
-    //                     message: 'User not found!',
-    //                 });
-    //             });
+    newProduct.save()
+        .then(product => {
+            User.findById(userId)
+                .then(user => {
+                    user.products.push(product._id);
+                    return user.save();
+                })
+                .then(response => {
+                    res.status(201).json({
+                        message: 'Article is stored in database!',
+                        hasError: false,
+                    });
+                })
+                .catch(err => {
+                    res.status(404).json({
+                        message: 'Current user is not found in database!',
+                        hasError: true,
+                    });
+                });
 
-    //     })
-    //     .catch(err => {
-    //         res.status(409).json({
-    //             message: 'Article information does not match the requirements!',
-    //         });
-    //     });
+        })
+        .catch(err => {
+            res.status(500).json({
+                message: 'Internal server error!',
+                hasError: true,
+            });
+        });
 });
 
 router.get('/product/:productId/delete', (req, res) => {
