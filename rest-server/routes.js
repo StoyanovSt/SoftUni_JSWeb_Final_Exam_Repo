@@ -4,7 +4,7 @@ const Product = require('./models/Product');
 const bcrypt = require('bcrypt');
 const config = require('./config/config');
 const jwt = require('jsonwebtoken');
-const isAuth = require('./middlewares/isAuth.js');
+const isAuthorized = require('./middlewares/isAuthorized.js');
 
 // HOME PAGE - DONE
 router.get('/', (req, res) => {
@@ -182,7 +182,7 @@ router.post('/login', (req, res) => {
 
 // LOGGED USER PAGES
 // CREATE - DONE
-router.post('/product/create', isAuth, (req, res) => {
+router.post('/product/create', isAuthorized, (req, res) => {
     // get data
     let { product, description, imageUrl, price } = req.body;
 
@@ -360,7 +360,10 @@ router.post('/product/:productId/edit', (req, res) => {
         })
 });
 
-router.get('/product/:productId/details', (req, res) => {
+//DETAILS - DONE
+router.get('/product/:productId/details', isAuthorized, (req, res) => {
+    const currentLoggedUserId = req.user._id;
+
     // get product id
     const productId = req.params.productId;
 
@@ -369,6 +372,7 @@ router.get('/product/:productId/details', (req, res) => {
         .then(product => {
             res.status(200).json({
                 product,
+                currentLoggedUserId
             });
         })
         .catch(err => {
