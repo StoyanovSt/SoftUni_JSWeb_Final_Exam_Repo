@@ -6,9 +6,9 @@ import Header from '../Header/Header.js';
 import Footer from '../Footer/Footer.js';
 
 class Contacts extends React.Component {
-    // constructor(props) {
-    //     super(props);
-    // }
+    constructor(props) {
+        super(props);
+    }
 
     render() {
         return (

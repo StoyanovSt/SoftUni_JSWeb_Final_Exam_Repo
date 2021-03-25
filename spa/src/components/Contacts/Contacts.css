@@ -8,7 +8,6 @@
     text-align: center;
     color: orange;
     margin-top: 30px;
-    margin-bottom: 47px;
     margin-left: 30px;
     margin-right: 30px;
 }
@@ -16,18 +15,18 @@
 #additional-info-heading {
     text-align: left;
     color: black;  
-    margin-left: 50px;    
+    margin-left: 70px;    
 }
 
 #additional-info{
     text-align: auto;
-    margin-left: 30px;
+    margin-left: 50px;
     margin-bottom: 30px;
     color: black;
 }
 
 #bee-pic {
-    margin-left: 1150px;
-    width: 15%;
+    margin-left: 420px;
+    width: 138px;
     height: auto;
 }
