@@ -103,7 +103,7 @@ class CreateProduct extends React.Component {
                             <label htmlFor="description">
                                 Description:
                             <br />
-                            Please add an e-mail address in the description below in order to help other users to contact you!
+                            (please add an e-mail address in the description below in order to help other users to contact you)
                         </label>
                             <textarea
                                 id="description"
@@ -116,7 +116,7 @@ class CreateProduct extends React.Component {
                             <input type="text" id="imageUrl" className="form-control" placeholder="Image Url" name="imageUrl" />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="price">Price:</label>
+                            <label htmlFor="price">Price per kg:</label>
                             <input type="number" id="price" className="form-control" placeholder="Price" name="price" />
                         </div>
                         <button onClick={(e) => this.onClickHandler(e)} type="submit" className="btn btn-primary">Create</button>

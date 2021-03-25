@@ -10,13 +10,13 @@ class Product extends React.Component {
 
     render() {
         return (
-            <div className="col-md-4">
-                <img src={this.props.product.imageUrl} className="rounded-circle" alt="" />
-                <p>{this.props.product.product}</p>
-                <p>Price: {this.props.product.price} lv/kg</p>
+            <div className="col-md-3">
+                <img src={this.props.data.imageUrl} className="rounded-circle"/>
+                <p>{this.props.data.product}</p>
+                <p>Price: {this.props.data.price} lv/kg</p>
                 <p>
-                    <Link to={`/api/product/${this.props.product._id}/details`}>
-                        <button type="button" className="btn btn-secondary">More info</button>
+                    <Link to={`/api/product/${this.props.data._id}/details`}>
+                        <button type="button" id="more-info-btn" className="btn btn-secondary">More info</button>
                     </Link>
                 </p>
             </div>

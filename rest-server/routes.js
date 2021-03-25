@@ -19,6 +19,7 @@ router.get('/', (req, res) => {
         .catch(err => {
             res.status(500).json({
                 message: 'Internal server error!',
+                hasError: true,
             });
         });
 
@@ -180,6 +181,7 @@ router.post('/login', (req, res) => {
 //----------------------------------------------------------------------------
 
 // LOGGED USER PAGES
+// CREATE - DONE
 router.post('/product/create', isAuth, (req, res) => {
     // get data
     let { product, description, imageUrl, price } = req.body;
@@ -260,13 +262,13 @@ router.post('/product/create', isAuth, (req, res) => {
                 })
                 .then(response => {
                     res.status(201).json({
-                        message: 'Article is stored in database!',
+                        message: 'Product successfully created!',
                         hasError: false,
                     });
                 })
                 .catch(err => {
                     res.status(404).json({
-                        message: 'Current user is not found in database!',
+                        message: 'User not found!',
                         hasError: true,
                     });
                 });
@@ -274,7 +276,7 @@ router.post('/product/create', isAuth, (req, res) => {
         })
         .catch(err => {
             res.status(500).json({
-                message: 'Internal server error!',
+                message: 'Something went wrong! Failed to store product in database!',
                 hasError: true,
             });
         });

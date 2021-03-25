@@ -15,15 +15,18 @@ h3 {
     margin: auto;
     display: block;
     width: 955px;
+    height: auto;
+    
 }
 
 div img {
-    margin-top: 20px;
+    margin-top: 129px;
     margin-bottom: 20px;
     margin-right: 20px;
     margin-left: 50px;
     display: block;
-    width: 207px;
+    width: 210px;
+    height: 190px;
 }
 
 .guest-home {
@@ -35,7 +38,7 @@ div img {
 
 #empty-container {
     margin-top: 294px;
-    margin-bottom: 294px;
+    margin-bottom: 318px;
 }
 
 

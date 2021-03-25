@@ -12,52 +12,66 @@ class Home extends React.Component {
 
         this.state = {
             products: [],
+            isLogged: localStorage.getItem('user') ? true : false,
         }
     }
 
-    // componentDidMount() {
-    //     fetch('http://localhost:5000/api/')
-    //         .then(res => res.json())
-    //         .then(allProducts => {
-    //             this.setState({ products: allProducts });
-    //         })
-    //         .catch(error => console.log(error));
-    // }
+    componentDidMount() {
+        fetch('http://localhost:5000/api/')
+            .then(res => res.json())
+            .then(allProducts => {
+                this.setState({ products: allProducts.products });
+            })
+            .catch(error => console.log(error));
+    }
 
     render() {
-        return (
-            <Fragment>
-                <Header />
-                {/* if loggedIn */}
+        const { isLogged } = this.state;
 
-                <div className="products-container">
-                    <div className="row bg-light">
-                        {/* {this.state.products.map(product => {
-                            <Product
-                                key={product._id}
-                                data={product}
-                            />
-                        })} */}
-
+        if (!isLogged) {
+            return (
+                <Fragment>
+                    <Header />
+                    <div className="guest-home">
+                        <h1>Welcome to Healthy world!</h1>
+                        <h2>The biggest online bee products marketplace</h2>
+                        <img src="../../../images/sunflowers.jpg" className="rounded" id="guest-view" alt="Sunflowers" />
+                    </div>
+                    <Footer />
+                </Fragment>
+            );
+        } else {
+            if (this.state.products.length == 0) {
+                return (
+                    <Fragment>
+                        <Header />
                         <div className="col-md-12" id="empty-container">
                             <h3>No products so far...</h3>
                         </div>
-                    </div>
-                </div>
+                        <Footer />
+                    </Fragment>
 
-                {/* else */}
+                );
+            } else {
+                return (
+                    <Fragment>
+                        <Header />
+                        <div className="products-container">
+                            <div className="row bg-light">
+                                {this.state.products.map(product => {
+                                    return <Product key={product._id} data={product} />;
+                                })}
+                            </div>
+                        </div>
+                        <Footer />
+                    </Fragment>
+                );
+            }
 
-                {/* <div className="guest-home">
-                    <h1>Welcome to Healthy world!</h1>
-                    <h2>The biggest online bee products marketplace</h2>
-                    <img src="../../../images/sunflowers.jpg" className="rounded" id="guest-view" alt="Sunflowers" />
-                </div> */}
+        }
 
-                {/* if */}
-                <Footer />
-            </Fragment>
-        );
     }
 }
 
 export default Home;
+
