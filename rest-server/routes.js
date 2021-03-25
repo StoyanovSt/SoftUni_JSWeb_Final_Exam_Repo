@@ -409,11 +409,5 @@ router.get('/user/profile', (req, res) => {
 });
 
 //---------------------------------------
-// PAGE NOT FOUND
-router.get('*', (req, res) => {
-    res.status(404).json({
-        message: 'Page not found!'
-    });
-});
 
 module.exports = router;

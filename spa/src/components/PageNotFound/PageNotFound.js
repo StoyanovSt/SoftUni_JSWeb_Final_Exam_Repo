@@ -14,7 +14,7 @@ class PageNotFound extends React.Component {
         return (
             <Fragment>
                 <Header />
-                <p id="page-not-found-message">Page not found!</p>
+                <h1 id="page-not-found-message">Page is not found!</h1>
                 <img src="../../../images/page-not-found.jpg" id="page-not-found" alt="Page not found!" />
                 <Footer />
             </Fragment>
