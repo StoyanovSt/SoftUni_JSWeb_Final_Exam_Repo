@@ -390,19 +390,23 @@ router.get('/product/:productId/buy', (req, res) => {
 });
 
 // USER PROFILE PAGE
-router.get('/user/profile', (req, res) => {
+router.get('/user/profile', isAuthorized, (req, res) => {
     // get current user by id
+    const currentLoggedUserId = req.user._id;
+
     // TODO: user ID
-    User.findById()
+    User.findById(currentLoggedUserId)
         .populate('products')
         .then(user => {
             res.status(200).json({
-                user,
+                username: user.username,
+                products: user.products,
             });
         })
         .catch(err => {
             res.status(500).json({
                 message: 'Internal server error!',
+                hasError: true,
             });
         });
 

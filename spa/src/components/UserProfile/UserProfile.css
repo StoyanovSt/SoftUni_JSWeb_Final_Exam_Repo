@@ -1,8 +1,14 @@
 #profile-picture {
-    width: auto;
+    width: 15%;
     height: auto;
     margin-top: 20px;
     margin-bottom: 50px;
     margin-right: 650px;
     margin-left: 650px;
+}
+
+#sad-emoticon {
+    width: 139px;
+    height: auto;
+    margin-left: 715px;
 }

@@ -11,37 +11,72 @@ class UserProfile extends React.Component {
         super(props);
 
         this.state = {
-            userInfo: {},
+            userInfo: {
+                username: '',
+                products: [],
+            },
         }
     }
 
     componentDidMount() {
-        fetch('http://localhost:5000/api/user/profile')
+        let token = '';
+
+        if (localStorage.getItem('user')) {
+            token = JSON.parse(localStorage.getItem('user')).TOKEN;
+        }
+
+        fetch('http://localhost:5000/api/user/profile', {
+            method: 'GET',
+            headers: {
+                'content-type': 'application/json',
+                'authorization': `${token}`,
+            }
+        })
             .then(res => res.json())
-            .then(currentUserInfo => {
-                this.setState({ userInfo: currentUserInfo });
+            .then(response => {
+                this.setState((oldState) => ({
+                    userInfo: oldState.userInfo = response,
+                }));
+
             })
             .catch(error => console.log(error));
     }
 
     render() {
-        return (
-            <Fragment>
-                <Header />
-                <img src="../../../images/profile-pic.png" id="profile-picture" alt="Profile picture" />
-                <p>Username: {this.state.userInfo.username}</p>
-                <p>All available products:</p>
-                <div className="row bg-light">
-                    {this.state.userInfo.products.map(product => {
-                        <Product
-                            key={product._id}
-                            data={product}
-                        />
-                    })}
-                </div>
-                <Footer />
-            </Fragment>
-        );
+        const userProducts = this.state.userInfo.products;
+
+        if (userProducts.length == 0) {
+            return (
+                <Fragment>
+                    <Header />
+                    <img src="../../../images/profile-pic.png" id="profile-picture" alt="Profile picture" />
+                    <h5 style={{ textAlign: "center" }}><strong>Username:</strong> {this.state.userInfo.username}</h5>
+                    <h5 style={{ textAlign: "center" }}><strong>All available products:</strong> Current user has no products available!</h5>
+                    <div className="row">
+                        <img src="../../../images/sad-emoticon.png" id="sad-emoticon" alt="Profile picture" />
+                    </div>
+                    <Footer />
+                </Fragment>
+            );
+        } else {
+            return (
+                <Fragment>
+                    <Header />
+                    <img src="../../../images/profile-pic.png" id="profile-picture" alt="Profile picture" />
+                    <h5 style={{ textAlign: "center" }}><strong>Username:</strong> {this.state.userInfo.username}</h5>
+                    <h5 style={{ marginLeft: "70px" }}><strong>All available products:</strong></h5>
+                    <div className="row">
+                        {userProducts.map(product => {
+                            return <Product
+                                key={product._id}
+                                data={product}
+                            />;
+                        })}
+                    </div>
+                    <Footer />
+                </Fragment>
+            );
+        }
     }
 }
 
