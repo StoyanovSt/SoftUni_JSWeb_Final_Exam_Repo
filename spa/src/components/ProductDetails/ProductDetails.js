@@ -79,7 +79,7 @@ class ProductDetails extends React.Component {
                         <p><strong>Price:</strong> {this.state.product.price} lv./kg </p>
 
                         <p id="buttons">
-                            <Link to={`/api/product/${this.props.match.params.productId}/buy`}>
+                            <Link to={`/api/product/${this.props.match.params.productId}/delete`}>
                                 <button type="button" className="btn btn-success">Buy product</button>
                             </Link>
                         </p>

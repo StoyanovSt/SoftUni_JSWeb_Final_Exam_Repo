@@ -395,11 +395,6 @@ router.get('/product/:productId/details', isAuthorized, (req, res) => {
 
 });
 
-
-router.get('/product/:productId/buy', (req, res) => {
-    // TO DO
-});
-
 // USER PROFILE PAGE - DONE
 router.get('/user/profile', isAuthorized, (req, res) => {
     // get current user by id
