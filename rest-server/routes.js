@@ -303,7 +303,8 @@ router.get('/product/:productId/delete', isAuthorized, (req, res) => {
         });
 });
 
-router.get('/product/:productId/edit', (req, res) => {
+// EDIT GET - DONE
+router.get('/product/:productId/edit', isAuthorized, (req, res) => {
     // get product id
     const productId = req.params.productId;
 
@@ -312,18 +313,21 @@ router.get('/product/:productId/edit', (req, res) => {
         .then(product => {
             res.status(200).json({
                 product,
+                hasError: false,
             });
         })
         .catch(err => {
             res.status(500).json({
                 message: 'Internal server error!',
+                hasError: false,
             });
         });
 });
 
-router.post('/product/:productId/edit', (req, res) => {
+// EDIT POST - DONE
+router.post('/product/:productId/edit', isAuthorized, (req, res) => {
     // get editted data
-    const { product, description, imageUrl, price, seller } = req.body;
+    const { product, description, imageUrl, price, seller} = req.body;
 
     // get product id
     const productId = req.params.productId;
@@ -346,19 +350,23 @@ router.post('/product/:productId/edit', (req, res) => {
             // get product by id from database
             Product.findById(productId).lean()
                 .then(product => {
-                    res.status(201).json({
+                    res.status(200).json({
                         product,
+                        hasError: false,
+                        message: 'Product has been successfully eddited!',
                     });
                 })
                 .catch(err => {
                     res.status(500).json({
                         message: 'Internal server error!',
+                        hasError: true,
                     });
                 });
         })
         .catch(err => {
             res.status(500).json({
                 message: 'Internal server error!',
+                hasError: true,
             });
         })
 });

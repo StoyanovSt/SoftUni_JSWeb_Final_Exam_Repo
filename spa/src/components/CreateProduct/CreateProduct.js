@@ -108,7 +108,8 @@ class CreateProduct extends React.Component {
                             <textarea
                                 id="description"
                                 className="form-control"
-                                placeholder="Description" name="description">
+                                placeholder="Description" 
+                                name="description">
                             </textarea>
                         </div>
                         <div className="form-group">
