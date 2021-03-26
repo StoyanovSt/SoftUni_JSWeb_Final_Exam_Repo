@@ -19,23 +19,29 @@ function App() {
         return <Redirect to="/api/" />;
     };
 
+    const isLogged = localStorage.getItem('user') ? true : false;
+
     return (
-        <div className="site-wrapper">
+        < div className="site-wrapper" >
             <Switch>
                 <Route path="/" exact render={() => <Redirect to="/api/" />} />
                 <Route path="/api/" exact component={Home} />
-                <Route path="/api/register" exact component={Register} />
-                <Route path="/api/login" exact component={Login} />
+
+                <Route path="/api/register" exact render={() => isLogged ? <Redirect to="/api/" /> : <Register />} />
+                <Route path="/api/login" exact render={() => isLogged ? <Redirect to="/api/" /> : <Login />} />
+
                 <Route path="/api/logout" exact render={logoutUser} />
-                <Route path="/api/product/create" exact component={CreateProduct} />
-                <Route path="/api/product/:productId/details" exact component={ProductDetails} />
-                <Route path="/api/product/:productId/delete" exact component={DeleteProduct} />
-                <Route path="/api/product/:productId/edit" exact component={EditProduct} />
-                <Route path="/api/user/profile" exact component={UserProfile} />
+
+                <Route path="/api/product/create" exact render={() => isLogged ? <CreateProduct /> : <Redirect to="/api/login" />} />
+                <Route path="/api/product/:productId/details" exact render={() => isLogged ? <ProductDetails /> : <Redirect to="/api/login" />} />
+                <Route path="/api/product/:productId/delete" exact render={() => isLogged ? <DeleteProduct /> : <Redirect to="/api/login" />} />
+                <Route path="/api/product/:productId/edit" exact render={() => isLogged ? <EditProduct /> : <Redirect to="/api/login" />} />
+                <Route path="/api/user/profile" exact render={() => isLogged ? <UserProfile /> : <Redirect to="/api/login" />} />
+
                 <Route path="/api/contacts" exact component={Contacts} />
                 <Route component={PageNotFound} />
             </Switch>
-        </div>
+        </div >
     );
 }
 
