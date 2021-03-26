@@ -11,6 +11,7 @@ import CreateProduct from './components/CreateProduct/CreateProduct.js';
 import Contacts from './components/Contacts/Contacts.js';
 import PageNotFound from './components/PageNotFound/PageNotFound.js';
 import UserProfile from './components/UserProfile/UserProfile.js';
+import DeleteProduct from './components/DeleteProduct/DeleteProduct.js';
 
 function App() {
     function logoutUser() {
@@ -28,7 +29,7 @@ function App() {
                 <Route path="/api/logout" exact render={logoutUser} />
                 <Route path="/api/product/create" exact component={CreateProduct} />
                 <Route path="/api/product/:productId/details" exact component={ProductDetails} />
-                <Route path="/api/product/:productId/delete" exact  />                
+                <Route path="/api/product/:productId/delete" exact component={DeleteProduct} />
                 <Route path="/api/product/:productId/edit" exact component={EditProduct} />
                 <Route path="/api/user/profile" exact component={UserProfile} />
                 <Route path="/api/contacts" exact component={Contacts} />

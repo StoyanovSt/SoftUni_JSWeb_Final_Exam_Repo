@@ -56,7 +56,7 @@ class ProductDetails extends React.Component {
                             <Link to={`/api/product/${this.props.match.params.productId}/edit`}>
                                 <button type="button" className="btn btn-secondary">Edit</button>
                             </Link>
-                            <Link to={`/api/product/${this.props.match.params.productId}/detele`}>
+                            <Link to={`/api/product/${this.props.match.params.productId}/delete`}>
                                 <button type="button" className="btn btn-danger">Delete</button>
                             </Link>
                         </p>

@@ -282,7 +282,8 @@ router.post('/product/create', isAuthorized, (req, res) => {
         });
 });
 
-router.get('/product/:productId/delete', (req, res) => {
+// DELET - DONE
+router.get('/product/:productId/delete', isAuthorized, (req, res) => {
     // get product id
     const productId = req.params.productId;
 
@@ -291,11 +292,13 @@ router.get('/product/:productId/delete', (req, res) => {
         .then(response => {
             res.status(200).json({
                 message: 'Successfully deleted!',
+                hasError: false,
             });
         })
         .catch(err => {
             res.status(500).json({
                 message: 'Internal server error!',
+                hasError: true,
             });
         });
 });
@@ -389,7 +392,7 @@ router.get('/product/:productId/buy', (req, res) => {
     // TO DO
 });
 
-// USER PROFILE PAGE
+// USER PROFILE PAGE - DONE
 router.get('/user/profile', isAuthorized, (req, res) => {
     // get current user by id
     const currentLoggedUserId = req.user._id;
