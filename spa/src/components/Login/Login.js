@@ -72,7 +72,7 @@ class Login extends React.Component {
             return (
                 <Fragment>
                     <Header />
-                    <h2 id="register-heading">Please enter username and password:</h2>
+                    <h2 id="register-heading">Please login:</h2>
                     <Notification message={this.state.notificationMessage} type={this.state.notificationType} />
                     <form id="login-form">
                         <div className="form-group">

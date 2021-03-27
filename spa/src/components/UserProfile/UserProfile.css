@@ -3,12 +3,13 @@
     height: auto;
     margin-top: 20px;
     margin-bottom: 50px;
-    margin-right: 650px;
-    margin-left: 650px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #sad-emoticon {
-    width: 139px;
+    width: 10%;
     height: auto;
-    margin-left: 715px;
+    margin-left: auto;
+    margin-right: auto;
 }

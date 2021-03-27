@@ -50,7 +50,7 @@ class UserProfile extends React.Component {
                 <Fragment>
                     <Header />
                     <img src="../../../images/profile-pic.png" id="profile-picture" alt="Profile picture" />
-                    <h5 style={{ textAlign: "center" }}><strong>Username:</strong> {this.state.userInfo.username}</h5>
+                    <h5 style={{ textAlign: "center"}}><strong>Username:</strong> {this.state.userInfo.username}</h5>
                     <h5 style={{ textAlign: "center" }}><strong>All available products:</strong> Current user has no products available!</h5>
                     <div className="row">
                         <img src="../../../images/sad-emoticon.png" id="sad-emoticon" alt="Profile picture" />

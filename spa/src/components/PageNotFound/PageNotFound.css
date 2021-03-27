@@ -6,7 +6,8 @@
 }
 
 #page-not-found {
-    margin-left: 530px;
-    width: 29%;
-    height: 427px;    
+    margin-left: auto;
+    margin-right: auto;
+    width: 23%;
+    height: auto; 
 }

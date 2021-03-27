@@ -31,9 +31,15 @@ class Header extends React.Component {
                             </Link>
                         </li>
                         <li className="nav-item">
+                            <span style={{ color: "orange" }}>-</span>
+                        </li>
+                        <li className="nav-item">
                             <Link to="/api/user/profile">
                                 <button type="button" className="btn btn-light">{this.state.username}'s profile</button>
                             </Link>
+                        </li>
+                        <li className="nav-item">
+                            <span style={{ color: "orange" }}>-</span>
                         </li>
                         <li className="nav-item">
                             <Link to="/api/logout">
@@ -58,6 +64,9 @@ class Header extends React.Component {
                             <Link to="/api/register">
                                 <button type="button" className="btn btn-light">Register</button>
                             </Link>
+                        </li>
+                        <li className="nav-item">
+                            <span style={{ color: "orange" }}>-</span>
                         </li>
                         <li className="nav-item">
                             <Link to="/api/login">

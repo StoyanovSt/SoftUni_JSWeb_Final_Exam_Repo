@@ -47,15 +47,16 @@ class ProductDetails extends React.Component {
                         <img src={this.state.product.imageUrl} id="product-pic" className="img-thumbnail" />
                     </div>
 
-                    <div className="col-md-12 text-center">
-                        <p><strong>Description:</strong></p>
-                        <p>{this.state.product.description}</p>
-                        <p><strong>Price:</strong> {this.state.product.price} lv./kg </p>
+                    <div className="col-md-12">
+                        <p style={{ fontSize: "20px" }}><strong>Description:</strong></p>
+                        <p style={{ fontSize: "17px" }}>{this.state.product.description}</p>
+                        <p style={{ fontSize: "20px" }}><strong>Price:</strong> <span style={{ fontSize: "17px" }}>{this.state.product.price} lv./kg</span></p>
 
                         <p id="buttons">
                             <Link to={`/api/product/${this.props.match.params.productId}/edit`}>
                                 <button type="button" className="btn btn-secondary">Edit</button>
                             </Link>
+                            <span style={{ color: "white" }}>-</span>
                             <Link to={`/api/product/${this.props.match.params.productId}/delete`}>
                                 <button type="button" className="btn btn-danger">Delete</button>
                             </Link>
