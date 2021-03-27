@@ -64,7 +64,7 @@ class UserProfile extends React.Component {
                     <Header />
                     <img src="../../../images/profile-pic.png" id="profile-picture" alt="Profile picture" />
                     <h5 style={{ textAlign: "center" }}><strong>Username:</strong> {this.state.userInfo.username}</h5>
-                    <h5 style={{ marginLeft: "70px" }}><strong>All available products:</strong></h5>
+                    <h5 style={{ marginLeft: "100px" }}><strong>All available products:</strong></h5>
                     <div className="row">
                         {userProducts.map(product => {
                             return <Product
