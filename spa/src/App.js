@@ -27,25 +27,25 @@ function App() {
                 <Route path="/" exact render={() => <Redirect to="/api/" />} />
                 <Route path="/api/" exact component={Home} />
 
-                {/* <Route path="/api/register" exact component={Register} />
-                <Route path="/api/login" exact component={Login} /> */}
+                <Route path="/api/register" exact component={Register} />
+                <Route path="/api/login" exact component={Login} />
 
-                <Route path="/api/register" exact render={() => (localStorage.getItem('user') ? true : false) ? <Redirect to="/api/" /> : <Register />} />
-                <Route path="/api/login" exact render={() => (localStorage.getItem('user') ? true : false) ? <Redirect to="/api/" /> : <Login />} />
+                {/* <Route path="/api/register" exact render={() => (localStorage.getItem('user') ? true : false) ? <Redirect to="/api/" /> : <Register />} />
+                <Route path="/api/login" exact render={() => (localStorage.getItem('user') ? true : false) ? <Redirect to="/api/" /> : <Login />} /> */}
 
                 <Route path="/api/logout" exact render={logoutUser} />
 
-                {/* <Route path="/api/product/create" exact component={CreateProduct} />
+                <Route path="/api/product/create" exact component={CreateProduct} />
                 <Route path="/api/product/:productId/details" exact component={ProductDetails} />
                 <Route path="/api/product/:productId/delete" exact component={DeleteProduct} />
                 <Route path="/api/product/:productId/edit" exact component={EditProduct} />
-                <Route path="/api/user/profile" exact component={UserProfile} /> */}
+                <Route path="/api/user/profile" exact component={UserProfile} />
 
-                <Route path="/api/product/create" exact render={() => (localStorage.getItem('user') ? true : false) ? <CreateProduct /> : <Redirect to="/api/login" />} />
+                {/* <Route path="/api/product/create" exact render={() => (localStorage.getItem('user') ? true : false) ? <CreateProduct /> : <Redirect to="/api/login" />} />
                 <Route path="/api/product/:productId/details" exact render={() => (localStorage.getItem('user') ? true : false) ? <ProductDetails /> : <Redirect to="/api/login" />} />
                 <Route path="/api/product/:productId/delete" exact render={() => (localStorage.getItem('user') ? true : false) ? <DeleteProduct /> : <Redirect to="/api/login" />} />
                 <Route path="/api/product/:productId/edit" exact render={() => (localStorage.getItem('user') ? true : false) ? <EditProduct /> : <Redirect to="/api/login" />} />
-                <Route path="/api/user/profile" exact render={() => (localStorage.getItem('user') ? true : false) ? <UserProfile /> : <Redirect to="/api/login" />} />
+                <Route path="/api/user/profile" exact render={() => (localStorage.getItem('user') ? true : false) ? <UserProfile /> : <Redirect to="/api/login" />} /> */}
 
                 <Route path="/api/contacts" exact component={Contacts} />
                 <Route component={PageNotFound} />

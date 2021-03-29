@@ -21,6 +21,11 @@ const productSchema = new mongoose.Schema({
         require: true,
         min: 0,
     },
+    likes: {
+        type: Number,
+        default: 0,
+    },
+    peopleLikedProduct: [],
     seller: {
         type: mongoose.Types.ObjectId,
         ref: 'User',

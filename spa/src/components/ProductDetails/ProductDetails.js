@@ -13,10 +13,63 @@ class ProductDetails extends React.Component {
         this.state = {
             product: {},
             currentLoggedUserId: '',
+            likesCount: 0,
+            isLikeProductButtonClicked: false,
+            isCurrentUserAlreadyLikedTheProduct: false,
         }
     }
 
+    likeProduct(e) {
+        let countOfLikes = this.state.likesCount + 1;
+        let currentUser = '';
+
+        if (localStorage.getItem('user')) {
+            currentUser = JSON.parse(localStorage.getItem('user')).USERNAME;
+        }
+
+        fetch(`http://localhost:5000/api/product/${this.props.match.params.productId}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({
+                countOfLikes,
+                currentUser
+            })
+        })
+            .then(response => response.json())
+            .then(response => {
+                console.log('OK');
+            })
+            .catch(err => console.log(err));
+
+        this.setState((oldState) => ({
+            likesCount: oldState.likesCount + 1,
+            isLikeProductButtonClicked: oldState.isLikeProductButtonClicked = true,
+        }));
+    }
+
     componentDidMount() {
+        let currentUser = '';
+
+        if (localStorage.getItem('user')) {
+            currentUser = JSON.parse(localStorage.getItem('user')).USERNAME;
+        }
+
+        fetch(`http://localhost:5000/api/product/${this.props.match.params.productId}`)
+            .then(response => response.json())
+            .then(response => {
+                this.setState((oldState) => ({
+                    likesCount: oldState.likesCount = response.product.likes,
+                    isCurrentUserAlreadyLikedTheProduct: oldState.isCurrentUserAlreadyLikedTheProduct =
+                        response.product.peopleLikedProduct.includes(currentUser) ? true : false,
+                }));
+
+                console.log(this.state.isCurrentUserAlreadyLikedTheProduct);
+
+            })
+            .catch(err => console.log(err));
+
         let token = '';
 
         if (localStorage.getItem('user')) {
@@ -75,15 +128,33 @@ class ProductDetails extends React.Component {
                     </div>
 
                     <div className="col-md-12 text-center">
-                        <p><strong>Description:</strong></p>
-                        <p>{this.state.product.description}</p>
-                        <p><strong>Price:</strong> {this.state.product.price} lv./kg </p>
+                        <p style={{ fontSize: "20px" }}><strong>Description:</strong></p>
+                        <p style={{ fontSize: "17px" }}>{this.state.product.description}</p>
+                        <p style={{ fontSize: "20px" }}><strong>Price:</strong><span style={{ fontSize: "17px" }}> {this.state.product.price} lv./kg </span></p>
 
                         <p id="buttons">
+                            <button
+                                onClick={(e) => this.likeProduct(e)}
+                                type="button"
+                                id="like-button"
+                                style={{ display: this.state.isCurrentUserAlreadyLikedTheProduct ? 'none' : 'block' }}
+                                className="btn btn-warning"
+                                disabled={this.state.isLikeProductButtonClicked ? true : false}>
+                                Like the product
+                            </button>
                             <Link to={`/api/product/${this.props.match.params.productId}/delete`}>
-                                <button type="button" className="btn btn-success">Buy product</button>
+                                <button
+                                    type="button"
+                                    className="btn btn-success" >
+                                    Buy product
+                                </button>
                             </Link>
+                            <span style={{ color: "white" }}>-</span>
+                            <span style={{ color: "white" }}>-</span>
+                            <span>{this.state.likesCount} likes</span>
+
                         </p>
+
                     </div>
                     <Footer />
                 </Fragment>

@@ -327,7 +327,7 @@ router.get('/product/:productId/edit', isAuthorized, (req, res) => {
 // EDIT POST - DONE
 router.post('/product/:productId/edit', isAuthorized, (req, res) => {
     // get editted data
-    const { product, description, imageUrl, price, seller} = req.body;
+    const { product, description, imageUrl, price, seller } = req.body;
 
     // get product id
     const productId = req.params.productId;
@@ -416,6 +416,63 @@ router.get('/user/profile', isAuthorized, (req, res) => {
             });
         });
 
+});
+
+// PRODUCT LIKE LOGIC - DONE
+router.get('/product/:productId', (req, res) => {
+    // get product id
+    const productId = req.params.productId;
+
+    // get product by id from database
+    Product.findById(productId).lean()
+        .then(product => {
+            res.status(200).json({
+                product,
+                hasError: false,
+            });
+        })
+        .catch(err => {
+            res.status(500).json({
+                message: 'Internal server error!',
+                hasError: false,
+            });
+        });
+});
+
+router.patch('/product/:productId', (req, res) => {
+    // get editted data
+    const { countOfLikes, currentUser } = req.body;
+
+    // get product id
+    const productId = req.params.productId;
+
+    // find one and update multiple
+    Product.updateOne({ _id: productId }, { likes: countOfLikes })
+        .then(response => {
+            return Product.updateOne({ _id: productId }, { $push: { peopleLikedProduct: currentUser } })
+        })
+        .then(response => {
+            // get product by id from database
+            Product.findById(productId).lean()
+                .then(product => {
+                    res.status(200).json({
+                        product,
+                        hasError: false,
+                    });
+                })
+                .catch(err => {
+                    res.status(500).json({
+                        message: 'Internal server error!',
+                        hasError: true,
+                    });
+                });
+        })
+        .catch(err => {
+            res.status(500).json({
+                message: 'Internal server error!',
+                hasError: true,
+            });
+        })
 });
 
 //---------------------------------------

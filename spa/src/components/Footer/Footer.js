@@ -19,7 +19,7 @@ class Footer extends React.Component {
                     </ul>
                     <ul className="navbar-nav ml-auto">
                         <li>
-                            Healthy world Ltd.
+                        &copy; 2020-2021 - Healthy world Ltd - All rights reserverd.
                         </li>
                     </ul>
                 </nav>
