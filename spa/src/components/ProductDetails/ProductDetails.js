@@ -1,6 +1,6 @@
 import React from 'react';
 import { Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 import './ProductDetails.css';
 import Header from '../Header/Header.js';
@@ -16,8 +16,18 @@ class ProductDetails extends React.Component {
             likesCount: 0,
             isLikeProductButtonClicked: false,
             isCurrentUserAlreadyLikedTheProduct: false,
+            redirectForDeletion: false,
         }
     }
+
+    deleteProduct(e) {
+        if (window.confirm("Are you sure that you want to delete this product?")) {
+            this.setState((oldState) => ({
+                redirectForDeletion: oldState.redirectForDeletion = true,
+            }));            
+        }
+    }
+
 
     likeProduct(e) {
         let countOfLikes = this.state.likesCount + 1;
@@ -91,6 +101,10 @@ class ProductDetails extends React.Component {
     }
 
     render() {
+        if (this.state.redirectForDeletion) {
+            return <Redirect to={`/api/product/${this.props.match.params.productId}/delete`} />;
+        }
+
         if (this.state.currentLoggedUserId === this.state.product.seller) {
             return (
                 <Fragment>
@@ -110,9 +124,7 @@ class ProductDetails extends React.Component {
                                 <button type="button" className="btn btn-secondary">Edit</button>
                             </Link>
                             <span style={{ color: "white" }}>-</span>
-                            <Link to={`/api/product/${this.props.match.params.productId}/delete`}>
-                                <button type="button" className="btn btn-danger">Delete</button>
-                            </Link>
+                            <button onClick={(e) => this.deleteProduct(e)} type="button" className="btn btn-danger">Delete</button>
                         </p>
                     </div>
                     <Footer />
@@ -152,15 +164,12 @@ class ProductDetails extends React.Component {
                             <span style={{ color: "white" }}>-</span>
                             <span style={{ color: "white" }}>-</span>
                             <span>{this.state.likesCount} likes</span>
-
                         </p>
-
                     </div>
                     <Footer />
                 </Fragment>
             );
         }
-
 
     }
 }
