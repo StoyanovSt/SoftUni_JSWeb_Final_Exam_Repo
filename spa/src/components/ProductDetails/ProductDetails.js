@@ -28,8 +28,16 @@ class ProductDetails extends React.Component {
     deleteProduct(e) {
         if (window.confirm("Are you sure that you want to delete this product?")) {
             this.setState((oldState) => ({
-                redirectForDeletion: oldState.redirectForDeletion = true,
+                notificationMessage: oldState.notificationMessage = 'Product has been successfully deleted!',
+                notificationType: oldState.notificationType = 'success',
+                redirectForDeletion: oldState.redirectForDeletion = false,
             }));
+
+            setTimeout(() => {
+                this.setState((oldState) => ({
+                    redirectForDeletion: oldState.redirectForDeletion = true,
+                }));
+            }, 3000);
         }
     }
 
@@ -173,6 +181,7 @@ class ProductDetails extends React.Component {
                 <Fragment>
                     <Header />
                     <h1 id="product-name">{this.state.product.product}</h1>
+                    <Notification message={this.state.notificationMessage} type={this.state.notificationType} />
                     <div className="col-md-12">
                         <img src={this.state.product.imageUrl} id="product-pic" className="img-thumbnail" />
                     </div>
