@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 class Footer extends React.Component {
-    // constructor(props) {
-    //     super(props);
-    // }
+    constructor(props) {
+        super(props);
+    }
 
     render() {
         return (
@@ -19,7 +19,7 @@ class Footer extends React.Component {
                     </ul>
                     <ul className="navbar-nav ml-auto">
                         <li>
-                        &copy; 2020-2021 - Healthy world Ltd - All rights reserverd.
+                            &copy; 2020-2021 - Healthy world Ltd - All rights reserverd.
                         </li>
                     </ul>
                 </nav>

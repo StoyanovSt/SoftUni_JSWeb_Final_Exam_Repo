@@ -3,6 +3,7 @@ import { Fragment } from 'react';
 import { Redirect } from 'react-router-dom';
 
 import './EditProduct.css';
+
 import Header from '../Header/Header.js';
 import Footer from '../Footer/Footer.js';
 import Notification from '../Notification/Notification.js';
@@ -67,8 +68,6 @@ class EditProduct extends React.Component {
         const price = e.target.parentNode.price.value;
         const seller = this.state.currentProduct.seller;
 
-        console.log(e.target.parentNode);
-
         const productId = this.props.match.params.productId;
 
         let token = '';
@@ -93,7 +92,6 @@ class EditProduct extends React.Component {
         })
             .then(response => response.json())
             .then(response => {
-                console.log(response);
                 if (response.hasError) {
                     this.setState((oldState) => ({
                         notificationMessage: oldState.notificationMessage = response.message,

@@ -3,6 +3,7 @@ import { Fragment } from 'react';
 import { Redirect } from 'react-router-dom';
 
 import './CreateProduct.css';
+
 import Header from '../Header/Header.js';
 import Footer from '../Footer/Footer.js';
 import Notification from '../Notification/Notification.js';

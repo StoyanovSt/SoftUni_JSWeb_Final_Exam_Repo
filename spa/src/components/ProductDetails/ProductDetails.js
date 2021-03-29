@@ -3,6 +3,7 @@ import { Fragment } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 
 import './ProductDetails.css';
+
 import Header from '../Header/Header.js';
 import Footer from '../Footer/Footer.js';
 import Notification from '../Notification/Notification.js';
@@ -22,6 +23,24 @@ class ProductDetails extends React.Component {
             notificationForBuying: false,
             notificationMessage: '',
             notificationType: '',
+        }
+    }
+
+    getToken(){
+        let token = '';
+
+        if (localStorage.getItem('user')) {
+            token = JSON.parse(localStorage.getItem('user')).TOKEN;
+            return token;
+        }
+    }
+
+    getUsername(){
+        let currentUser = '';
+
+        if (localStorage.getItem('user')) {
+            currentUser = JSON.parse(localStorage.getItem('user')).USERNAME;
+            return currentUser;
         }
     }
 
@@ -57,14 +76,9 @@ class ProductDetails extends React.Component {
         }
     }
 
-
     likeProduct(e) {
         let countOfLikes = this.state.likesCount + 1;
-        let currentUser = '';
-
-        if (localStorage.getItem('user')) {
-            currentUser = JSON.parse(localStorage.getItem('user')).USERNAME;
-        }
+        const currentUser = this.getUsername();
 
         fetch(`http://localhost:5000/api/product/${this.props.match.params.productId}`, {
             method: 'PATCH',
@@ -78,7 +92,6 @@ class ProductDetails extends React.Component {
         })
             .then(response => response.json())
             .then(response => {
-                console.log('OK');
             })
             .catch(err => console.log(err));
 
@@ -89,30 +102,19 @@ class ProductDetails extends React.Component {
     }
 
     componentDidMount() {
-        let currentUser = '';
-
-        if (localStorage.getItem('user')) {
-            currentUser = JSON.parse(localStorage.getItem('user')).USERNAME;
-        }
+        const currentUser = this.getUsername();
 
         fetch(`http://localhost:5000/api/product/${this.props.match.params.productId}`)
             .then(response => response.json())
             .then(response => {
                 this.setState((oldState) => ({
                     likesCount: oldState.likesCount = response.product.likes,
-                    isCurrentUserAlreadyLikedTheProduct: oldState.isCurrentUserAlreadyLikedTheProduct =
-                        response.product.peopleLikedProduct.includes(currentUser) ? true : false,
+                    isCurrentUserAlreadyLikedTheProduct: oldState.isCurrentUserAlreadyLikedTheProduct = response.product.peopleLikedProduct.includes(currentUser) ? true : false,
                 }));
-
-
             })
             .catch(err => console.log(err));
 
-        let token = '';
-
-        if (localStorage.getItem('user')) {
-            token = JSON.parse(localStorage.getItem('user')).TOKEN;
-        }
+        const token = this.getToken();
 
         fetch(`http://localhost:5000/api/product/${this.props.match.params.productId}/details`, {
             method: 'GET',
@@ -144,12 +146,10 @@ class ProductDetails extends React.Component {
                     <div className="col-md-12">
                         <img src={this.state.product.imageUrl} id="product-pic" className="img-thumbnail" />
                     </div>
-
                     <div className="col-md-12 text-center">
                         <p style={{ fontSize: "20px" }}><strong>Description:</strong></p>
                         <p style={{ fontSize: "17px" }}>{this.state.product.description}</p>
                         <p style={{ fontSize: "20px" }}><strong>Price:</strong><span style={{ fontSize: "17px" }}> {this.state.product.price} lv./kg </span></p>
-
                         <p id="buttons">
                             <button
                                 onClick={(e) => this.likeProduct(e)}
@@ -160,12 +160,7 @@ class ProductDetails extends React.Component {
                                 disabled={this.state.isLikeProductButtonClicked ? true : false}>
                                 Like the product
                             </button>
-                            <button
-                                onClick={(e) => this.buyProduct(e)}
-                                type="button"
-                                className="btn btn-success" >
-                                Buy product
-                            </button>
+                            <button onClick={(e) => this.buyProduct(e)} type="button" className="btn btn-success" >Buy product</button>
                             <span style={{ color: "white" }}>-</span>
                             <span style={{ color: "white" }}>-</span>
                             <span>{this.state.likesCount} likes</span>
@@ -185,12 +180,10 @@ class ProductDetails extends React.Component {
                     <div className="col-md-12">
                         <img src={this.state.product.imageUrl} id="product-pic" className="img-thumbnail" />
                     </div>
-
                     <div className="col-md-12">
                         <p style={{ fontSize: "20px" }}><strong>Description:</strong></p>
                         <p style={{ fontSize: "17px" }}>{this.state.product.description}</p>
                         <p style={{ fontSize: "20px" }}><strong>Price:</strong> <span style={{ fontSize: "17px" }}>{this.state.product.price} lv./kg</span></p>
-
                         <p id="buttons">
                             <button onClick={(e) => this.deleteProduct(e)} type="button" className="btn btn-danger">Delete</button>
                         </p>
@@ -206,12 +199,10 @@ class ProductDetails extends React.Component {
                     <div className="col-md-12">
                         <img src={this.state.product.imageUrl} id="product-pic" className="img-thumbnail" />
                     </div>
-
                     <div className="col-md-12">
                         <p style={{ fontSize: "20px" }}><strong>Description:</strong></p>
                         <p style={{ fontSize: "17px" }}>{this.state.product.description}</p>
                         <p style={{ fontSize: "20px" }}><strong>Price:</strong> <span style={{ fontSize: "17px" }}>{this.state.product.price} lv./kg</span></p>
-
                         <p id="buttons">
                             <Link to={`/api/product/${this.props.match.params.productId}/edit`}>
                                 <button type="button" className="btn btn-secondary">Edit</button>
@@ -231,12 +222,10 @@ class ProductDetails extends React.Component {
                     <div className="col-md-12">
                         <img src={this.state.product.imageUrl} id="product-pic" className="img-thumbnail" />
                     </div>
-
                     <div className="col-md-12 text-center">
                         <p style={{ fontSize: "20px" }}><strong>Description:</strong></p>
                         <p style={{ fontSize: "17px" }}>{this.state.product.description}</p>
                         <p style={{ fontSize: "20px" }}><strong>Price:</strong><span style={{ fontSize: "17px" }}> {this.state.product.price} lv./kg </span></p>
-
                         <p id="buttons">
                             <button
                                 onClick={(e) => this.likeProduct(e)}
@@ -247,12 +236,7 @@ class ProductDetails extends React.Component {
                                 disabled={this.state.isLikeProductButtonClicked ? true : false}>
                                 Like the product
                             </button>
-                            <button
-                                onClick={(e) => this.buyProduct(e)}
-                                type="button"
-                                className="btn btn-success" >
-                                Buy product
-                            </button>
+                            <button onClick={(e) => this.buyProduct(e)} type="button" className="btn btn-success">Buy product</button>
                             <span style={{ color: "white" }}>-</span>
                             <span style={{ color: "white" }}>-</span>
                             <span>{this.state.likesCount} likes</span>

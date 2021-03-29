@@ -2,6 +2,7 @@ import React from 'react';
 import { Fragment } from 'react';
 
 import './UserProfile.css';
+
 import Product from '../Product/Product.js';
 import Header from '../Header/Header.js';
 import Footer from '../Footer/Footer.js';
@@ -53,7 +54,7 @@ class UserProfile extends React.Component {
                     <h5 style={{ textAlign: "center"}}><strong>Username:</strong> {this.state.userInfo.username}</h5>
                     <h5 style={{ textAlign: "center" }}><strong>All available products:</strong> Current user has no products available!</h5>
                     <div className="row">
-                        <img src="../../../images/sad-emoticon.png" id="sad-emoticon" alt="Profile picture" />
+                        <img src="../../../images/sad-emoticon.png" id="sad-emoticon" alt="Sad emoticon" />
                     </div>
                     <Footer />
                 </Fragment>

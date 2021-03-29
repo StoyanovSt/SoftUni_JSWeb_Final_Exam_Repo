@@ -16,7 +16,7 @@ class Product extends React.Component {
                 <p>Price: {this.props.data.price} lv/kg</p>
                 <p>
                     <Link to={`/api/product/${this.props.data._id}/details`}>
-                        <button type="button" id="more-info-btn" className="btn btn-secondary" style={{ marginBottom: "225px" }}>More info</button>
+                        <button type="button" id="more-info-btn" className="btn btn-secondary" style={{ marginBottom: "265px" }}>More info</button>
                     </Link>
                 </p>
             </div>

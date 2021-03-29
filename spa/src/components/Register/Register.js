@@ -3,9 +3,10 @@ import { Fragment } from 'react';
 import { Redirect } from 'react-router-dom';
 
 import './Register.css';
-import Notification from '../Notification/Notification.js';
+
 import Header from '../Header/Header.js';
 import Footer from '../Footer/Footer.js';
+import Notification from '../Notification/Notification.js';
 
 class Register extends React.Component {
     constructor(props) {

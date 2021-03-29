@@ -1,8 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 
-import Notification from '../Notification/Notification.js';
-
 class DeleteProduct extends React.Component {
     constructor(props) {
         super(props);
@@ -30,10 +28,10 @@ class DeleteProduct extends React.Component {
         })
             .then(response => response.json())
             .then(response => {
-                if (response.hasError) {
-                    this.setState({ isDeleted: false });
-                } else {
+                if (!response.hasError) {
                     this.setState({ isDeleted: true });
+                } else {
+                    this.setState({ isDeleted: false });
                 }
             })
             .catch(err => console.log(err));

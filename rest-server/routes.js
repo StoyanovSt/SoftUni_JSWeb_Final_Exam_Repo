@@ -6,7 +6,7 @@ const config = require('./config/config');
 const jwt = require('jsonwebtoken');
 const isAuthorized = require('./middlewares/isAuthorized.js');
 
-// HOME PAGE - DONE
+// Home page
 router.get('/', (req, res) => {
     // get all products
     Product.find()
@@ -26,8 +26,7 @@ router.get('/', (req, res) => {
 });
 
 // AUTH-----------------------------
-
-// register - DONE
+// Register
 router.post('/register', (req, res) => {
     // get user data
     const userData = req.body;
@@ -120,7 +119,7 @@ router.post('/register', (req, res) => {
 
 });
 
-// login - DONE
+// Login
 router.post('/login', (req, res) => {
     // get user data
     const userData = req.body;
@@ -178,10 +177,9 @@ router.post('/login', (req, res) => {
         });
 
 });
-//----------------------------------------------------------------------------
 
-// LOGGED USER PAGES
-// CREATE - DONE
+//----------------------------------------------------------------------------
+// Create product
 router.post('/product/create', isAuthorized, (req, res) => {
     // get data
     let { product, description, imageUrl, price } = req.body;
@@ -282,7 +280,7 @@ router.post('/product/create', isAuthorized, (req, res) => {
         });
 });
 
-// DELET - DONE
+// Delete product
 router.get('/product/:productId/delete', isAuthorized, (req, res) => {
     // get product id
     const productId = req.params.productId;
@@ -303,7 +301,7 @@ router.get('/product/:productId/delete', isAuthorized, (req, res) => {
         });
 });
 
-// EDIT GET - DONE
+// Edit product
 router.get('/product/:productId/edit', isAuthorized, (req, res) => {
     // get product id
     const productId = req.params.productId;
@@ -324,7 +322,6 @@ router.get('/product/:productId/edit', isAuthorized, (req, res) => {
         });
 });
 
-// EDIT POST - DONE
 router.post('/product/:productId/edit', isAuthorized, (req, res) => {
     // get editted data
     const { product, description, imageUrl, price, seller } = req.body;
@@ -371,7 +368,7 @@ router.post('/product/:productId/edit', isAuthorized, (req, res) => {
         })
 });
 
-//DETAILS - DONE
+// Product details page
 router.get('/product/:productId/details', isAuthorized, (req, res) => {
     const currentLoggedUserId = req.user._id;
 
@@ -395,7 +392,7 @@ router.get('/product/:productId/details', isAuthorized, (req, res) => {
 
 });
 
-// USER PROFILE PAGE - DONE
+// User profile page
 router.get('/user/profile', isAuthorized, (req, res) => {
     // get current user by id
     const currentLoggedUserId = req.user._id;
@@ -418,7 +415,7 @@ router.get('/user/profile', isAuthorized, (req, res) => {
 
 });
 
-// PRODUCT LIKE LOGIC - DONE
+// Like product logic
 router.get('/product/:productId', (req, res) => {
     // get product id
     const productId = req.params.productId;

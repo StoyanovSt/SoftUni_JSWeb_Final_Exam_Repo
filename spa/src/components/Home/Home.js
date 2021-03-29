@@ -1,10 +1,11 @@
 import React from 'react';
 import { Fragment } from 'react';
 
+import './Home.css';
+
 import Header from '../Header/Header.js';
 import Footer from '../Footer/Footer.js';
 import Product from '../Product/Product.js';
-import './Home.css';
 
 class Home extends React.Component {
     constructor(props) {
