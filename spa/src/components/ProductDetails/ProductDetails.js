@@ -14,6 +14,7 @@ class ProductDetails extends React.Component {
         this.state = {
             product: {},
             currentLoggedUserId: '',
+            currentLoggedUserName: '',
             likesCount: 0,
             isLikeProductButtonClicked: false,
             isCurrentUserAlreadyLikedTheProduct: false,
@@ -95,7 +96,6 @@ class ProductDetails extends React.Component {
                         response.product.peopleLikedProduct.includes(currentUser) ? true : false,
                 }));
 
-                console.log(this.state.isCurrentUserAlreadyLikedTheProduct);
 
             })
             .catch(err => console.log(err));
@@ -115,7 +115,11 @@ class ProductDetails extends React.Component {
         })
             .then(response => response.json())
             .then(response => {
-                this.setState({ product: response.product, currentLoggedUserId: response.currentLoggedUserId });
+                this.setState({
+                    product: response.product,
+                    currentLoggedUserId: response.currentLoggedUserId,
+                    currentLoggedUserName: currentUser,
+                });
             })
             .catch(err => console.log(err));
     }
@@ -164,7 +168,28 @@ class ProductDetails extends React.Component {
             );
         }
 
-        if (this.state.currentLoggedUserId === this.state.product.seller) {
+        if (this.state.currentLoggedUserName === 'ADMIN') {
+            return (
+                <Fragment>
+                    <Header />
+                    <h1 id="product-name">{this.state.product.product}</h1>
+                    <div className="col-md-12">
+                        <img src={this.state.product.imageUrl} id="product-pic" className="img-thumbnail" />
+                    </div>
+
+                    <div className="col-md-12">
+                        <p style={{ fontSize: "20px" }}><strong>Description:</strong></p>
+                        <p style={{ fontSize: "17px" }}>{this.state.product.description}</p>
+                        <p style={{ fontSize: "20px" }}><strong>Price:</strong> <span style={{ fontSize: "17px" }}>{this.state.product.price} lv./kg</span></p>
+
+                        <p id="buttons">
+                            <button onClick={(e) => this.deleteProduct(e)} type="button" className="btn btn-danger">Delete</button>
+                        </p>
+                    </div>
+                    <Footer />
+                </Fragment>
+            );
+        } else if (this.state.currentLoggedUserId === this.state.product.seller) {
             return (
                 <Fragment>
                     <Header />
