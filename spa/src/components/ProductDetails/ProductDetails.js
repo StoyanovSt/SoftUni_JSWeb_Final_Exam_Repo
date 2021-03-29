@@ -5,6 +5,7 @@ import { Link, Redirect } from 'react-router-dom';
 import './ProductDetails.css';
 import Header from '../Header/Header.js';
 import Footer from '../Footer/Footer.js';
+import Notification from '../Notification/Notification.js';
 
 class ProductDetails extends React.Component {
     constructor(props) {
@@ -17,6 +18,9 @@ class ProductDetails extends React.Component {
             isLikeProductButtonClicked: false,
             isCurrentUserAlreadyLikedTheProduct: false,
             redirectForDeletion: false,
+            notificationForBuying: false,
+            notificationMessage: '',
+            notificationType: '',
         }
     }
 
@@ -24,7 +28,23 @@ class ProductDetails extends React.Component {
         if (window.confirm("Are you sure that you want to delete this product?")) {
             this.setState((oldState) => ({
                 redirectForDeletion: oldState.redirectForDeletion = true,
-            }));            
+            }));
+        }
+    }
+
+    buyProduct(e) {
+        if (window.confirm("Are you sure that you want to buy this product?")) {
+            this.setState((oldState) => ({
+                notificationMessage: oldState.notificationMessage = 'You have bought the product!',
+                notificationType: oldState.notificationType = 'success',
+                notificationForBuying: oldState.notificationForBuying = true,
+            }));
+
+            setTimeout(() => {
+                this.setState((oldState) => ({
+                    redirectForDeletion: oldState.redirectForDeletion = true,
+                }));
+            }, 5000);
         }
     }
 
@@ -103,6 +123,45 @@ class ProductDetails extends React.Component {
     render() {
         if (this.state.redirectForDeletion) {
             return <Redirect to={`/api/product/${this.props.match.params.productId}/delete`} />;
+        } else if (this.state.notificationForBuying) {
+            return (
+                <Fragment>
+                    <Header />
+                    <h1 id="product-name">{this.state.product.product}</h1>
+                    <Notification message={this.state.notificationMessage} type={this.state.notificationType} />
+                    <div className="col-md-12">
+                        <img src={this.state.product.imageUrl} id="product-pic" className="img-thumbnail" />
+                    </div>
+
+                    <div className="col-md-12 text-center">
+                        <p style={{ fontSize: "20px" }}><strong>Description:</strong></p>
+                        <p style={{ fontSize: "17px" }}>{this.state.product.description}</p>
+                        <p style={{ fontSize: "20px" }}><strong>Price:</strong><span style={{ fontSize: "17px" }}> {this.state.product.price} lv./kg </span></p>
+
+                        <p id="buttons">
+                            <button
+                                onClick={(e) => this.likeProduct(e)}
+                                type="button"
+                                id="like-button"
+                                style={{ display: this.state.isCurrentUserAlreadyLikedTheProduct ? 'none' : 'block' }}
+                                className="btn btn-warning"
+                                disabled={this.state.isLikeProductButtonClicked ? true : false}>
+                                Like the product
+                            </button>
+                            <button
+                                onClick={(e) => this.buyProduct(e)}
+                                type="button"
+                                className="btn btn-success" >
+                                Buy product
+                            </button>
+                            <span style={{ color: "white" }}>-</span>
+                            <span style={{ color: "white" }}>-</span>
+                            <span>{this.state.likesCount} likes</span>
+                        </p>
+                    </div>
+                    <Footer />
+                </Fragment>
+            );
         }
 
         if (this.state.currentLoggedUserId === this.state.product.seller) {
@@ -154,13 +213,12 @@ class ProductDetails extends React.Component {
                                 disabled={this.state.isLikeProductButtonClicked ? true : false}>
                                 Like the product
                             </button>
-                            <Link to={`/api/product/${this.props.match.params.productId}/delete`}>
-                                <button
-                                    type="button"
-                                    className="btn btn-success" >
-                                    Buy product
-                                </button>
-                            </Link>
+                            <button
+                                onClick={(e) => this.buyProduct(e)}
+                                type="button"
+                                className="btn btn-success" >
+                                Buy product
+                            </button>
                             <span style={{ color: "white" }}>-</span>
                             <span style={{ color: "white" }}>-</span>
                             <span>{this.state.likesCount} likes</span>
