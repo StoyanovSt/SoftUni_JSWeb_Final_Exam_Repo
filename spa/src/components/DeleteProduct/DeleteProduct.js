@@ -1,5 +1,11 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
+import { Fragment } from 'react';
+
+import './DeleteProduct.css';
+
+import Header from '../Header/Header.js';
+import Footer from '../Footer/Footer.js';
 
 class DeleteProduct extends React.Component {
     constructor(props) {
@@ -47,7 +53,13 @@ class DeleteProduct extends React.Component {
         }
         else {
             return (
-                <Redirect to="/api/" />
+                <Fragment>
+                    <Header />
+                    <div className="col-md-12" id="loading">
+                        <h3>Loading...</h3>
+                    </div>
+                    <Footer />
+                </Fragment>
             );
         }
 
