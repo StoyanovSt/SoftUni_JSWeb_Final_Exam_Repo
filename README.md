@@ -6,3 +6,4 @@ Online bee products marketplace - SPA using React; REST API using Node.js, Expre
     Архитектурата на клиентската част е представена и разделена на компоненти с отделни CSS file-ове за всеки компонент. 
 Работено е с клас компоненти.
     За стилизацията са използвани CSS и Bootstrap.
+    
